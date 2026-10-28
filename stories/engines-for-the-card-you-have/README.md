@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/engines-for-the-card-you-have/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [Docker](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/docker) · [GPU inference engine engineering](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/gpu-inference-engine-engineering) · [KV-cache engineering](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/kv-cache-engineering) · [Model quantization](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/model-quantization) · [NVIDIA TensorRT](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt) · [NVIDIA TensorRT-LLM](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt-llm) · [Performance engineering and benchmarking](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/performance-engineering-and-benchmarking)  
 Skills: [GPU inference optimisation](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-inference-optimisation) · [TensorRT and TensorRT-LLM engineering](https://github.com/coreyjames-ai/portfolio/tree/main/skills/tensorrt-and-tensorrt-llm-engineering) · [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture) · [AI-assisted engineering methodology](https://github.com/coreyjames-ai/portfolio/tree/main/skills/ai-assisted-engineering-methodology)  
@@ -85,7 +86,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Engines for the card you have." coreyjames.ai, 2026. https://coreyjames.ai/stories/engines-for-the-card-you-have/
+Corey James. "Engines for the card you have." coreyjames.ai, 2026. https://coreyjames.ai/stories/engines-for-the-card-you-have/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-engines-for-the-card-you-have,
@@ -93,7 +94,8 @@ Corey James. "Engines for the card you have." coreyjames.ai, 2026. https://corey
   title = {Engines for the card you have},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/engines-for-the-card-you-have/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/engines-for-the-card-you-have}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/engines-for-the-card-you-have},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

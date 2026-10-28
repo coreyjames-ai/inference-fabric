@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/an-index-you-can-rebuild-from-its-receipt/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [Approximate nearest-neighbour search](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/approximate-nearest-neighbour-search) · [CBOR](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/cbor) · [CUDA C++](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/cuda-c-plus-plus) · [Determinism and numerical reproducibility](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/determinism-and-numerical-reproducibility) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust)  
 Skills: [vector search and ANN indexes](https://github.com/coreyjames-ai/portfolio/tree/main/skills/vector-search-and-ann-indexes) · [AI-assisted engineering methodology](https://github.com/coreyjames-ai/portfolio/tree/main/skills/ai-assisted-engineering-methodology)  
@@ -73,7 +74,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "An index you can rebuild from its receipt." coreyjames.ai, 2026. https://coreyjames.ai/stories/an-index-you-can-rebuild-from-its-receipt/
+Corey James. "An index you can rebuild from its receipt." coreyjames.ai, 2026. https://coreyjames.ai/stories/an-index-you-can-rebuild-from-its-receipt/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-an-index-you-can-rebuild-from-its-receipt,
@@ -81,7 +82,8 @@ Corey James. "An index you can rebuild from its receipt." coreyjames.ai, 2026. h
   title = {An index you can rebuild from its receipt},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/an-index-you-can-rebuild-from-its-receipt/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/an-index-you-can-rebuild-from-its-receipt}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/an-index-you-can-rebuild-from-its-receipt},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

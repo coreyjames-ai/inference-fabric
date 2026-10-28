@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/starting-full-and-ending-clean/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [Performance engineering and benchmarking](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/performance-engineering-and-benchmarking) · [Prometheus](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/prometheus) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust) · [Token-aware GPU batch scheduling](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/token-aware-gpu-batch-scheduling)  
 Skills: [high-throughput batch inference](https://github.com/coreyjames-ai/portfolio/tree/main/skills/high-throughput-batch-inference) · [token-aware scheduling](https://github.com/coreyjames-ai/portfolio/tree/main/skills/token-aware-scheduling) · [GPU inference optimisation](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-inference-optimisation) · [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture)  
@@ -75,7 +76,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Starting full and ending clean." coreyjames.ai, 2026. https://coreyjames.ai/stories/starting-full-and-ending-clean/
+Corey James. "Starting full and ending clean." coreyjames.ai, 2026. https://coreyjames.ai/stories/starting-full-and-ending-clean/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-starting-full-and-ending-clean,
@@ -83,7 +84,8 @@ Corey James. "Starting full and ending clean." coreyjames.ai, 2026. https://core
   title = {Starting full and ending clean},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/starting-full-and-ending-clean/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/starting-full-and-ending-clean}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/starting-full-and-ending-clean},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

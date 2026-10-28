@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/rebuild-only-what-moved/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric) · [PostgreSQL Fabric](https://github.com/coreyjames-ai/postgresql-fabric)  
 Technologies: [Determinism and numerical reproducibility](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/determinism-and-numerical-reproducibility) · [Large-scale GPU data pipelines](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/large-scale-gpu-data-pipelines) · [PostgreSQL](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/postgresql) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust)  
 Skills: [PostgreSQL performance tuning](https://github.com/coreyjames-ai/portfolio/tree/main/skills/postgresql-performance-tuning)  
@@ -72,7 +73,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Rebuild only what moved." coreyjames.ai, 2026. https://coreyjames.ai/stories/rebuild-only-what-moved/
+Corey James. "Rebuild only what moved." coreyjames.ai, 2026. https://coreyjames.ai/stories/rebuild-only-what-moved/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-rebuild-only-what-moved,
@@ -80,7 +81,8 @@ Corey James. "Rebuild only what moved." coreyjames.ai, 2026. https://coreyjames.
   title = {Rebuild only what moved},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/rebuild-only-what-moved/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/rebuild-only-what-moved}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/rebuild-only-what-moved},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

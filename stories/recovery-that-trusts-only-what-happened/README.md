@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/recovery-that-trusts-only-what-happened/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [Append-only log and journal design](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/append-only-log-and-journal-design) · [Distributed-systems reliability](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/distributed-systems-reliability) · [Idempotency, exactly-once effects and crash recovery](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/idempotency-exactly-once-effects-and-crash-recovery) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust)  
 Skills: [distributed systems correctness](https://github.com/coreyjames-ai/portfolio/tree/main/skills/distributed-systems-correctness) · [message broker and queue design](https://github.com/coreyjames-ai/portfolio/tree/main/skills/message-broker-and-queue-design)  
@@ -80,7 +81,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Recovery that trusts only what happened." coreyjames.ai, 2026. https://coreyjames.ai/stories/recovery-that-trusts-only-what-happened/
+Corey James. "Recovery that trusts only what happened." coreyjames.ai, 2026. https://coreyjames.ai/stories/recovery-that-trusts-only-what-happened/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-recovery-that-trusts-only-what-happened,
@@ -88,7 +89,8 @@ Corey James. "Recovery that trusts only what happened." coreyjames.ai, 2026. htt
   title = {Recovery that trusts only what happened},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/recovery-that-trusts-only-what-happened/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/recovery-that-trusts-only-what-happened}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/recovery-that-trusts-only-what-happened},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

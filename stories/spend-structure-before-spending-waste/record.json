@@ -44,5 +44,8 @@
  "canonical": "https://coreyjames.ai/stories/spend-structure-before-spending-waste/",
  "datePublished": "2026-10-28",
  "author": "Corey James",
- "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/spend-structure-before-spending-waste"
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/spend-structure-before-spending-waste",
+ "doi": "10.5281/zenodo.23735148",
+ "doi_relation": "part-of",
+ "author_orcid": "https://orcid.org/0009-0008-7246-963X"
 }

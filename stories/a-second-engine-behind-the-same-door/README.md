@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/a-second-engine-behind-the-same-door/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [C++](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/c-plus-plus) · [Contract-first interface design](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/contract-first-interface-design) · [Hidden-state extraction](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/hidden-state-extraction) · [NVIDIA TensorRT](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt) · [NVIDIA TensorRT-LLM](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt-llm)  
 Skills: [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture) · [GPU inference optimisation](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-inference-optimisation) · [vLLM internals](https://github.com/coreyjames-ai/portfolio/tree/main/skills/vllm-internals) · [AI-assisted engineering methodology](https://github.com/coreyjames-ai/portfolio/tree/main/skills/ai-assisted-engineering-methodology)  
@@ -75,7 +76,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "A second engine behind the same door." coreyjames.ai, 2026. https://coreyjames.ai/stories/a-second-engine-behind-the-same-door/
+Corey James. "A second engine behind the same door." coreyjames.ai, 2026. https://coreyjames.ai/stories/a-second-engine-behind-the-same-door/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-a-second-engine-behind-the-same-door,
@@ -83,7 +84,8 @@ Corey James. "A second engine behind the same door." coreyjames.ai, 2026. https:
   title = {A second engine behind the same door},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/a-second-engine-behind-the-same-door/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-second-engine-behind-the-same-door}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-second-engine-behind-the-same-door},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

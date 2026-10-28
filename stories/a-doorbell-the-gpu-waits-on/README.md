@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/a-doorbell-the-gpu-waits-on/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [Binary wire protocol design](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/binary-wire-protocol-design) · [C++](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/c-plus-plus) · [CUDA Driver API](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/cuda-driver-api) · [GPU memory management](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/gpu-memory-management) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust)  
 Skills: [GPU inference optimisation](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-inference-optimisation) · [vLLM internals](https://github.com/coreyjames-ai/portfolio/tree/main/skills/vllm-internals) · [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture)  
@@ -64,7 +65,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "A doorbell the GPU waits on." coreyjames.ai, 2026. https://coreyjames.ai/stories/a-doorbell-the-gpu-waits-on/
+Corey James. "A doorbell the GPU waits on." coreyjames.ai, 2026. https://coreyjames.ai/stories/a-doorbell-the-gpu-waits-on/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-a-doorbell-the-gpu-waits-on,
@@ -72,7 +73,8 @@ Corey James. "A doorbell the GPU waits on." coreyjames.ai, 2026. https://coreyja
   title = {A doorbell the GPU waits on},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/a-doorbell-the-gpu-waits-on/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-doorbell-the-gpu-waits-on}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-doorbell-the-gpu-waits-on},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

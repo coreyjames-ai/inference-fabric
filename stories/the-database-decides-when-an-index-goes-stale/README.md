@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/the-database-decides-when-an-index-goes-stale/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric) · [PostgreSQL Fabric](https://github.com/coreyjames-ai/postgresql-fabric)  
 Technologies: [Approximate nearest-neighbour search](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/approximate-nearest-neighbour-search) · [Idempotency, exactly-once effects and crash recovery](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/idempotency-exactly-once-effects-and-crash-recovery) · [PostgreSQL](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/postgresql) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust)  
 Skills: [exactly-once delivery and crash recovery](https://github.com/coreyjames-ai/portfolio/tree/main/skills/exactly-once-delivery-and-crash-recovery) · [distributed systems correctness](https://github.com/coreyjames-ai/portfolio/tree/main/skills/distributed-systems-correctness) · [vector search and ANN indexes](https://github.com/coreyjames-ai/portfolio/tree/main/skills/vector-search-and-ann-indexes) · [evidence-gated acceptance](https://github.com/coreyjames-ai/portfolio/tree/main/skills/evidence-gated-acceptance)  
@@ -72,7 +73,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "The database decides when an index goes stale." coreyjames.ai, 2026. https://coreyjames.ai/stories/the-database-decides-when-an-index-goes-stale/
+Corey James. "The database decides when an index goes stale." coreyjames.ai, 2026. https://coreyjames.ai/stories/the-database-decides-when-an-index-goes-stale/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-the-database-decides-when-an-index-goes-stale,
@@ -80,7 +81,8 @@ Corey James. "The database decides when an index goes stale." coreyjames.ai, 202
   title = {The database decides when an index goes stale},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/the-database-decides-when-an-index-goes-stale/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-database-decides-when-an-index-goes-stale}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-database-decides-when-an-index-goes-stale},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/a-detector-for-a-silent-corruption/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [C++](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/c-plus-plus) · [Hidden-state extraction](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/hidden-state-extraction) · [NVIDIA Blackwell GPUs](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-blackwell-gpus) · [NVIDIA TensorRT](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt)  
 Skills: [TensorRT and TensorRT-LLM engineering](https://github.com/coreyjames-ai/portfolio/tree/main/skills/tensorrt-and-tensorrt-llm-engineering) · [AI-assisted engineering methodology](https://github.com/coreyjames-ai/portfolio/tree/main/skills/ai-assisted-engineering-methodology) · [distributed systems correctness](https://github.com/coreyjames-ai/portfolio/tree/main/skills/distributed-systems-correctness) · [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture)  
@@ -66,7 +67,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "A detector for a silent corruption." coreyjames.ai, 2026. https://coreyjames.ai/stories/a-detector-for-a-silent-corruption/
+Corey James. "A detector for a silent corruption." coreyjames.ai, 2026. https://coreyjames.ai/stories/a-detector-for-a-silent-corruption/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-a-detector-for-a-silent-corruption,
@@ -74,7 +75,8 @@ Corey James. "A detector for a silent corruption." coreyjames.ai, 2026. https://
   title = {A detector for a silent corruption},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/a-detector-for-a-silent-corruption/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-detector-for-a-silent-corruption}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-detector-for-a-silent-corruption},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

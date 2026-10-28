@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/throughput-that-finished-nothing/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [C++](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/c-plus-plus) · [NVIDIA TensorRT-LLM](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt-llm) · [Performance engineering and benchmarking](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/performance-engineering-and-benchmarking) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust) · [Token-aware GPU batch scheduling](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/token-aware-gpu-batch-scheduling)  
 Skills: [GPU inference optimisation](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-inference-optimisation) · [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture) · [vLLM internals](https://github.com/coreyjames-ai/portfolio/tree/main/skills/vllm-internals) · [Rust systems engineering](https://github.com/coreyjames-ai/portfolio/tree/main/skills/rust-systems-engineering)  
@@ -75,7 +76,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Throughput that finished nothing." coreyjames.ai, 2026. https://coreyjames.ai/stories/throughput-that-finished-nothing/
+Corey James. "Throughput that finished nothing." coreyjames.ai, 2026. https://coreyjames.ai/stories/throughput-that-finished-nothing/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-throughput-that-finished-nothing,
@@ -83,7 +84,8 @@ Corey James. "Throughput that finished nothing." coreyjames.ai, 2026. https://co
   title = {Throughput that finished nothing},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/throughput-that-finished-nothing/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/throughput-that-finished-nothing}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/throughput-that-finished-nothing},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

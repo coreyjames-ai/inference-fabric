@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/done-means-delivered/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [Append-only log and journal design](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/append-only-log-and-journal-design) · [Binary wire protocol design](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/binary-wire-protocol-design) · [Idempotency, exactly-once effects and crash recovery](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/idempotency-exactly-once-effects-and-crash-recovery) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust)  
 Skills: [exactly-once delivery and crash recovery](https://github.com/coreyjames-ai/portfolio/tree/main/skills/exactly-once-delivery-and-crash-recovery) · [append-only log design](https://github.com/coreyjames-ai/portfolio/tree/main/skills/append-only-log-design) · [distributed systems correctness](https://github.com/coreyjames-ai/portfolio/tree/main/skills/distributed-systems-correctness) · [message broker and queue design](https://github.com/coreyjames-ai/portfolio/tree/main/skills/message-broker-and-queue-design)  
@@ -65,7 +66,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Done means delivered." coreyjames.ai, 2026. https://coreyjames.ai/stories/done-means-delivered/
+Corey James. "Done means delivered." coreyjames.ai, 2026. https://coreyjames.ai/stories/done-means-delivered/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-done-means-delivered,
@@ -73,7 +74,8 @@ Corey James. "Done means delivered." coreyjames.ai, 2026. https://coreyjames.ai/
   title = {Done means delivered},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/done-means-delivered/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/done-means-delivered}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/done-means-delivered},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

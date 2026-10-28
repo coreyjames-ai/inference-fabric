@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/the-thirteen-percent-that-was-never-missing/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [GPU profiling and tracing](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/gpu-profiling-and-tracing) · [NVIDIA Nsight Systems](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-nsight-systems) · [NVIDIA TensorRT-LLM](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt-llm) · [Performance engineering and benchmarking](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/performance-engineering-and-benchmarking)  
 Skills: [GPU profiling (Nsight)](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-profiling-nsight) · [GPU inference optimisation](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-inference-optimisation) · [AI-assisted engineering methodology](https://github.com/coreyjames-ai/portfolio/tree/main/skills/ai-assisted-engineering-methodology) · [evidence-gated acceptance](https://github.com/coreyjames-ai/portfolio/tree/main/skills/evidence-gated-acceptance)  
@@ -73,7 +74,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "The thirteen percent that was never missing." coreyjames.ai, 2026. https://coreyjames.ai/stories/the-thirteen-percent-that-was-never-missing/
+Corey James. "The thirteen percent that was never missing." coreyjames.ai, 2026. https://coreyjames.ai/stories/the-thirteen-percent-that-was-never-missing/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-the-thirteen-percent-that-was-never-missing,
@@ -81,7 +82,8 @@ Corey James. "The thirteen percent that was never missing." coreyjames.ai, 2026.
   title = {The thirteen percent that was never missing},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/the-thirteen-percent-that-was-never-missing/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-thirteen-percent-that-was-never-missing}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-thirteen-percent-that-was-never-missing},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/tests-that-passed-without-a-gpu/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [C++](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/c-plus-plus) · [ML evaluation methodology](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/ml-evaluation-methodology) · [NVIDIA TensorRT-LLM](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt-llm) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust) · [Static analysis as tests](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/static-analysis-as-tests)  
 Skills: [TensorRT and TensorRT-LLM engineering](https://github.com/coreyjames-ai/portfolio/tree/main/skills/tensorrt-and-tensorrt-llm-engineering) · [distributed systems correctness](https://github.com/coreyjames-ai/portfolio/tree/main/skills/distributed-systems-correctness) · [AI-assisted engineering methodology](https://github.com/coreyjames-ai/portfolio/tree/main/skills/ai-assisted-engineering-methodology) · [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture)  
@@ -73,7 +74,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Tests that passed without a GPU." coreyjames.ai, 2026. https://coreyjames.ai/stories/tests-that-passed-without-a-gpu/
+Corey James. "Tests that passed without a GPU." coreyjames.ai, 2026. https://coreyjames.ai/stories/tests-that-passed-without-a-gpu/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-tests-that-passed-without-a-gpu,
@@ -81,7 +82,8 @@ Corey James. "Tests that passed without a GPU." coreyjames.ai, 2026. https://cor
   title = {Tests that passed without a GPU},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/tests-that-passed-without-a-gpu/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/tests-that-passed-without-a-gpu}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/tests-that-passed-without-a-gpu},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

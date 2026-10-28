@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/where-a-cluster-sits/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [CPU reference implementations and GPU equivalence testing](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/cpu-reference-implementations-and-gpu-equivalence-testing) · [CUDA C++](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/cuda-c-plus-plus) · [Cluster-health metrics on the GPU](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/cluster-health-metrics-on-the-gpu) · [FAISS](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/faiss) · [GPU numerical kernel design](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/gpu-numerical-kernel-design) · [Gaussian-kernel cluster analysis](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/gaussian-kernel-cluster-analysis) · [Hybrid retrieval](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/hybrid-retrieval) · [Streaming statistics in CUDA](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/streaming-statistics-in-cuda) · [Tiled pairwise kernels](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/tiled-pairwise-kernels)  
 Skills: [embedding analytics and cluster metrics](https://github.com/coreyjames-ai/portfolio/tree/main/skills/embedding-analytics-and-cluster-metrics) · [CUDA kernel development](https://github.com/coreyjames-ai/portfolio/tree/main/skills/cuda-kernel-development) · [vector search and ANN indexes](https://github.com/coreyjames-ai/portfolio/tree/main/skills/vector-search-and-ann-indexes) · [GPU inference optimisation](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-inference-optimisation)  
@@ -77,7 +78,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Where a cluster sits." coreyjames.ai, 2026. https://coreyjames.ai/stories/where-a-cluster-sits/
+Corey James. "Where a cluster sits." coreyjames.ai, 2026. https://coreyjames.ai/stories/where-a-cluster-sits/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-where-a-cluster-sits,
@@ -85,7 +86,8 @@ Corey James. "Where a cluster sits." coreyjames.ai, 2026. https://coreyjames.ai/
   title = {Where a cluster sits},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/where-a-cluster-sits/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/where-a-cluster-sits}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/where-a-cluster-sits},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

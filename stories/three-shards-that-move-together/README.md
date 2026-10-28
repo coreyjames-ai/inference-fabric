@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/three-shards-that-move-together/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric) · [PostgreSQL Fabric](https://github.com/coreyjames-ai/postgresql-fabric)  
 Technologies: [Idempotency, exactly-once effects and crash recovery](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/idempotency-exactly-once-effects-and-crash-recovery) · [Large-scale GPU data pipelines](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/large-scale-gpu-data-pipelines) · [PostgreSQL](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/postgresql) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust)  
 Skills: [distributed systems correctness](https://github.com/coreyjames-ai/portfolio/tree/main/skills/distributed-systems-correctness) · [exactly-once delivery and crash recovery](https://github.com/coreyjames-ai/portfolio/tree/main/skills/exactly-once-delivery-and-crash-recovery)  
@@ -69,7 +70,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Three shards that move together." coreyjames.ai, 2026. https://coreyjames.ai/stories/three-shards-that-move-together/
+Corey James. "Three shards that move together." coreyjames.ai, 2026. https://coreyjames.ai/stories/three-shards-that-move-together/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-three-shards-that-move-together,
@@ -77,7 +78,8 @@ Corey James. "Three shards that move together." coreyjames.ai, 2026. https://cor
   title = {Three shards that move together},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/three-shards-that-move-together/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/three-shards-that-move-together}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/three-shards-that-move-together},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

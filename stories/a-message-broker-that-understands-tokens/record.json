@@ -40,5 +40,8 @@
  "canonical": "https://coreyjames.ai/stories/a-message-broker-that-understands-tokens/",
  "datePublished": "2026-10-28",
  "author": "Corey James",
- "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-message-broker-that-understands-tokens"
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-message-broker-that-understands-tokens",
+ "doi": "10.5281/zenodo.23735148",
+ "doi_relation": "part-of",
+ "author_orcid": "https://orcid.org/0009-0008-7246-963X"
 }

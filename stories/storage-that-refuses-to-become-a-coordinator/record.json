@@ -34,5 +34,8 @@
  "canonical": "https://coreyjames.ai/stories/storage-that-refuses-to-become-a-coordinator/",
  "datePublished": "2026-10-28",
  "author": "Corey James",
- "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/storage-that-refuses-to-become-a-coordinator"
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/storage-that-refuses-to-become-a-coordinator",
+ "doi": "10.5281/zenodo.23735148",
+ "doi_relation": "part-of",
+ "author_orcid": "https://orcid.org/0009-0008-7246-963X"
 }

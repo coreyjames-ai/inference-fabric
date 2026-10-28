@@ -46,5 +46,8 @@
  "canonical": "https://coreyjames.ai/systems/inference-fabric/",
  "datePublished": "2026-10-28",
  "author": "Corey James",
- "github": "https://github.com/coreyjames-ai/inference-fabric"
+ "github": "https://github.com/coreyjames-ai/inference-fabric",
+ "doi": "10.5281/zenodo.23735148",
+ "doi_relation": "self",
+ "author_orcid": "https://orcid.org/0009-0008-7246-963X"
 }

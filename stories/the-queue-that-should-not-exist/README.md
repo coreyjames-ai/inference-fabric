@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/the-queue-that-should-not-exist/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [Capacity engineering, backpressure and load testing](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/capacity-engineering-backpressure-and-load-testing) · [Contract-first interface design](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/contract-first-interface-design) · [NVIDIA TensorRT-LLM](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/nvidia-tensorrt-llm) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust)  
 Skills: [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture) · [message broker and queue design](https://github.com/coreyjames-ai/portfolio/tree/main/skills/message-broker-and-queue-design) · [token-aware scheduling](https://github.com/coreyjames-ai/portfolio/tree/main/skills/token-aware-scheduling) · [vLLM internals](https://github.com/coreyjames-ai/portfolio/tree/main/skills/vllm-internals)  
@@ -60,7 +61,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "The queue that should not exist." coreyjames.ai, 2026. https://coreyjames.ai/stories/the-queue-that-should-not-exist/
+Corey James. "The queue that should not exist." coreyjames.ai, 2026. https://coreyjames.ai/stories/the-queue-that-should-not-exist/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-the-queue-that-should-not-exist,
@@ -68,7 +69,8 @@ Corey James. "The queue that should not exist." coreyjames.ai, 2026. https://cor
   title = {The queue that should not exist},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/the-queue-that-should-not-exist/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-queue-that-should-not-exist}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-queue-that-should-not-exist},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 

@@ -4,6 +4,7 @@
 
 Canonical: https://coreyjames.ai/stories/shapes-have-a-lifecycle/  
 Author: Corey James · Published: 2026-10-28 · Kind: story  
+DOI: https://doi.org/10.5281/zenodo.23735148 (this page is a chapter of the system's report)  
 Systems: [Inference Fabric](https://github.com/coreyjames-ai/inference-fabric)  
 Technologies: [KV-cache engineering](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/kv-cache-engineering) · [Rust](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/rust) · [State-machine design for multi-agent workflows](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/state-machine-design-for-multi-agent-workflows) · [Token-aware GPU batch scheduling](https://github.com/coreyjames-ai/portfolio/tree/main/technologies/token-aware-gpu-batch-scheduling)  
 Skills: [observability and alerting](https://github.com/coreyjames-ai/portfolio/tree/main/skills/observability-and-alerting) · [GPU inference optimisation](https://github.com/coreyjames-ai/portfolio/tree/main/skills/gpu-inference-optimisation) · [token-aware scheduling](https://github.com/coreyjames-ai/portfolio/tree/main/skills/token-aware-scheduling) · [inference serving architecture](https://github.com/coreyjames-ai/portfolio/tree/main/skills/inference-serving-architecture)  
@@ -72,7 +73,7 @@ Each line is a claim the canonical page supports, with the figure as the page st
 
 ## Citation
 
-Corey James. "Shapes have a lifecycle." coreyjames.ai, 2026. https://coreyjames.ai/stories/shapes-have-a-lifecycle/
+Corey James. "Shapes have a lifecycle." coreyjames.ai, 2026. https://coreyjames.ai/stories/shapes-have-a-lifecycle/ In: the Inference Fabric technical report, doi:10.5281/zenodo.23735148.
 
 ```bibtex
 @misc{coreyjames-shapes-have-a-lifecycle,
@@ -80,7 +81,8 @@ Corey James. "Shapes have a lifecycle." coreyjames.ai, 2026. https://coreyjames.
   title = {Shapes have a lifecycle},
   year = {2026},
   howpublished = {\url{https://coreyjames.ai/stories/shapes-have-a-lifecycle/}},
-  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/shapes-have-a-lifecycle}
+  note = {GitHub copy: https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/shapes-have-a-lifecycle},
+  doi = {10.5281/zenodo.23735148}
 }
 ```
 
