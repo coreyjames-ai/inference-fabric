@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/ghost-bytes-in-a-zero-copy-ring/",
+ "kind": "story",
+ "title": "Ghost bytes in a zero-copy ring",
+ "subtitle": "A pinned-memory ring deadlocked with the GPU idle and hundreds of thousands of items in flight, because wrap-around padding was never freed; and a GPU worker that registered twice was starved as dead",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "GPU memory management",
+  "Rust",
+  "C++",
+  "Distributed systems reliability"
+ ],
+ "stats": [
+  {
+   "value": "62,400",
+   "label": "items dispatched and unresolved when the ring stalled"
+  },
+  {
+   "value": "0",
+   "label": "pending tokens at that moment, with the GPU idle"
+  },
+  {
+   "value": "27",
+   "label": "tests covering the event pool's checks"
+  }
+ ],
+ "lede": "Batches reach the GPU through a hot queue in pinned host memory: mapped, write-combined, pre-faulted pages holding a ring of batch descriptors, with a doorbell the producer rings to publish and the GPU waits on. No copies, no allocation after warm-up, and one accounting error that stopped two GPUs. When a batch does not fit before the end of the ring, the producer pads to the wrap point and writes the batch at the start. Every wrap left a few ghost bytes allocated and unreleasable, and over a long run they accumulated until the ring reported itself full with nothing in it, with a second consumer starving behind the first.",
+ "quote": "Zero-copy and lock-free paths fail by accounting rather than by crashing, and the failures show up as a system that is quiet when it should be busy.",
+ "evidence": [
+  "Lock-free and zero-copy data paths: a pinned-memory ring between CPU and GPU deadlocked by wrap-around padding never released, fixed by a padding field the acknowledgement returns.",
+  "Distributed systems debugging: a stall with 62,400 items dispatched and unresolved, 0 pending tokens and the GPU idle, traced to an accounting error rather than a crash.",
+  "Message broker and queue design: each GPU worker registered once on one socket split into read and write halves that fail together, so working GPUs stop being declared dead.",
+  "CUDA stream and event discipline: compute-stream synchronisation refused at run time and events drawn from a pool with generation counters and owner-thread checks, covered by 27 tests."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/ghost-bytes-in-a-zero-copy-ring/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/ghost-bytes-in-a-zero-copy-ring"
+}

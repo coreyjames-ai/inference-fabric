@@ -1,0 +1,43 @@
+{
+ "url": "https://coreyjames.ai/stories/an-index-you-can-rebuild-from-its-receipt/",
+ "kind": "story",
+ "title": "An index you can rebuild from its receipt",
+ "subtitle": "Approximate-nearest-neighbour indexes are usually irreproducible, so a different result cannot be told from a bug; three hashes, a hash-seeded sample, fixed iterations and a byte-identical rebuild test make mine reproducible",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Approximate nearest-neighbour search",
+  "Determinism and numerical reproducibility",
+  "Rust",
+  "CUDA C++",
+  "CBOR"
+ ],
+ "stats": [
+  {
+   "value": "100K",
+   "label": "rows, the default cap on the training sample"
+  },
+  {
+   "value": "4,096",
+   "label": "cells at most; a configuration outside the bounds is refused"
+  },
+  {
+   "value": "32",
+   "label": "vectors at least in every cell"
+  }
+ ],
+ "lede": "An approximate index trades exactness for speed, and most implementations trade reproducibility away with it: random seeds from the clock, training samples that depend on traversal order, floating-point reductions whose result depends on which thread finished first. When such an index returns different neighbours after a rebuild, nobody can say whether the data changed, the build changed, or something broke. Every build produces three hashes. The configuration hash is over a canonical binary encoding of the parameters, so two builds with the same settings have the same hash regardless of how the settings were written.",
+ "quote": "I wanted an index whose receipt is enough to rebuild it byte for byte.",
+ "evidence": [
+  "Vector search and ANN indexes: an approximate index rebuilt byte for byte from a receipt of three hashes over its configuration, its training set and its artifact body.",
+  "Deterministic GPU computation: k-means++ seeding split so the GPU computes distances and the host draws seeds, then 25 fixed Lloyd iterations in single precision with a fixed reduction order.",
+  "Reproducible sampling: a reservoir sample seeded by a hash of the build seed and the sorted shard set, capped at 100K rows, so the same data in any order yields the same sample.",
+  "Regression testing for ML indexes: builds repeated and shuffled with one artifact hash asserted, plus a recall floor of 85% at ten neighbours against exact search."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/an-index-you-can-rebuild-from-its-receipt/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/an-index-you-can-rebuild-from-its-receipt"
+}

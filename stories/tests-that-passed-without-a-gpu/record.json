@@ -1,0 +1,43 @@
+{
+ "url": "https://coreyjames.ai/stories/tests-that-passed-without-a-gpu/",
+ "kind": "story",
+ "title": "Tests that passed without a GPU",
+ "subtitle": "Stub builds returned fake tokens and every test went green; the build now refuses to produce a binary without the real engine library, and the generation contract was fixed at the engine boundary before a corpus was reused",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Rust",
+  "C++",
+  "NVIDIA TensorRT-LLM",
+  "Static analysis as tests",
+  "ML evaluation methodology"
+ ],
+ "stats": [
+  {
+   "value": "65,462",
+   "label": "tokens in a rejected batch, under a 65,536-token limit"
+  },
+  {
+   "value": "148",
+   "label": "candidate sequences in that batch, nothing out of bounds"
+  },
+  {
+   "value": "159 M",
+   "label": "tokens dispatched upstream against an expected eight million"
+  }
+ ],
+ "lede": "The inference runtime links a C++ library against the vendor's engine, and for a while the build could substitute a stub when the library was absent. The stub returned a fake token for every sequence, and the test suite passed against it. Two further bugs in the same period made the same point under real load. The build script now refuses to produce a binary unless the real engine library is present, and stubs must be requested by name. The integration tests abort if they find themselves running against a stub. That turned a silent substitution into a loud one, and it is the reason every figure on the runtime's pages came from the hardware it names.",
+ "quote": "A green suite that has never touched an engine is worse than no suite, because it says something true about the harness and nothing about the runtime.",
+ "evidence": [
+  "Test integrity for GPU software: a build that refuses to produce a binary without the real inference engine library, after a stub returning fake tokens let every test pass.",
+  "TensorRT and TensorRT-LLM engineering: an executor rejecting every batch, 148 sequences and 65,462 tokens under a 65,536-token limit, fixed at the C++ request-building boundary.",
+  "ML evaluation data hygiene: a replay corpus cleaned of end-of-sequence markers and prompt fragments before reuse, by stopping on the end-of-sequence token and excluding input from output.",
+  "Distributed systems debugging: an upstream conductor dispatching 159 M tokens against an expected eight million, traced to a budget function imported and never called."
+ ],
+ "problem": "proof",
+ "canonical": "https://coreyjames.ai/stories/tests-that-passed-without-a-gpu/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/tests-that-passed-without-a-gpu"
+}

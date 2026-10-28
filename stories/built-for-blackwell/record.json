@@ -1,0 +1,49 @@
+{
+ "url": "https://coreyjames.ai/stories/built-for-blackwell/",
+ "kind": "story",
+ "title": "Built for Blackwell",
+ "subtitle": "CUDA 13 on a Blackwell GPU at the bench, with a provisioning path that reaches datacentre Blackwell capacity in the cloud, and an honest line about what carries over",
+ "systems": [
+  "inference-fabric",
+  "fafo-core"
+ ],
+ "technologies": [
+  "CUDA Driver API",
+  "CUDA C++",
+  "NVIDIA Blackwell GPUs",
+  "NVIDIA TensorRT-LLM",
+  "Federated compute provisioning",
+  "RunPod"
+ ],
+ "stats": [
+  {
+   "value": "300",
+   "label": "lines of safe Rust over the CUDA 13 driver API"
+  },
+  {
+   "value": "64 × 128",
+   "label": "lattice search tile in use, chosen over a 128-row tile"
+  },
+  {
+   "value": "32",
+   "label": "minimum rows per cell, bounding float-atomic contention"
+  },
+  {
+   "value": "3",
+   "label": "budget warnings, at 80, 90 and 95 percent, before the gate denies"
+  }
+ ],
+ "lede": "My GPU work targets NVIDIA's Blackwell generation from the toolchain up. The CUDA engine builds with CUDA 13.1 and compiles every kernel to native SM 120 binaries, the consumer Blackwell architecture of both cards, with no PTX embedded and no just-in-time path to another architecture. The inference runtime's TensorRT-LLM image is built for the same target. And the provisioning path that stands up a GPU consumer node can ask a cloud provider for datacentre Blackwell capacity through the same call that starts a container on my workbench, under a budget gate that an agent cannot raise. When I started, no Rust CUDA crate supported CUDA 13 or SM 120.",
+ "quote": "The engine's job is to produce numbers I can verify.",
+ "evidence": [
+  "NVIDIA Blackwell development: CUDA 13.1 kernels compiled to native SM 120 binaries with no PTX, behind a test gate that refuses any device whose compute capability is not exactly 12.0.",
+  "Rust systems engineering: 300 lines of safe Rust over the CUDA 13 driver API, written when no Rust CUDA crate supported the new generation.",
+  "Cloud GPU provisioning with cost controls: one call stands up a GPU consumer node behind a budget gate, with 3 warnings at 80, 90 and 95 percent before it denies.",
+  "CUDA kernel development: a 64 x 128 lattice search tile and a minimum of 32 rows per cell to bound float-atomic contention."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/built-for-blackwell/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/built-for-blackwell"
+}

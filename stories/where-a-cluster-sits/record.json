@@ -1,0 +1,45 @@
+{
+ "url": "https://coreyjames.ai/stories/where-a-cluster-sits/",
+ "kind": "story",
+ "title": "Where a cluster sits",
+ "subtitle": "Ten neighbourhood metrics that place each cluster among the clusters around it, computed from precomputed neighbour lists in a handful of GPU launches",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "CUDA C++",
+  "GPU numerical kernel design",
+  "Hybrid retrieval",
+  "FAISS"
+ ],
+ "stats": [
+  {
+   "value": "6",
+   "label": "values from one sorted row, one thread per cluster"
+  },
+  {
+   "value": "0",
+   "label": "distance computations inside the cluster-level kernels"
+  },
+  {
+   "value": "24 KB",
+   "label": "shared memory for a cluster's own and five neighbour centroids"
+  },
+  {
+   "value": "2",
+   "label": "metrics that need every member"
+  }
+ ],
+ "lede": "Most cluster statistics look inward: how tight, how spread, how many sub-groups. The questions that decide what to do with a cluster look outward. Is it crowded by neighbours or alone? Do its members belong to it or to the cluster next door? Does it sit on the topic its neighbours share, or off it? Has it drifted from the group it was part of? My engine answers those with a neighbourhood family of metrics that runs from precomputed neighbour lists, so none of the kernels has to search. For every cluster, an approximate-nearest-neighbour index over the centroids returns a sorted row of the twenty nearest clusters and their distances, with the cluster itself at position zero.",
+ "quote": "The comparison is the same and the square root is wasted work.",
+ "evidence": [
+  "Embedding analytics and cluster metrics: ten neighbourhood metrics per cluster from precomputed neighbour lists, with 0 distance computations inside the cluster-level kernels.",
+  "CUDA kernel development: a member-level kernel caching a cluster's own and five neighbour centroids in 24 KB of shared memory, 231.82 ms at 100,000 members.",
+  "Vector search and ANN indexes: an approximate nearest-neighbour index over centroids giving each cluster a sorted row of its 20 nearest clusters."
+ ],
+ "problem": "embedding-analytics",
+ "canonical": "https://coreyjames.ai/stories/where-a-cluster-sits/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/where-a-cluster-sits"
+}

@@ -1,0 +1,41 @@
+{
+ "url": "https://coreyjames.ai/stories/asking-the-engine-what-it-meant/",
+ "kind": "story",
+ "title": "Asking the engine what it meant",
+ "subtitle": "One input's convention was ambiguous in the vendor's documentation, and guessing wrong would silently extract the wrong token; so at startup the runtime runs a tiny batch both ways and refuses to start unless exactly one answer is consistent",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "NVIDIA TensorRT",
+  "C++",
+  "Hidden-state extraction",
+  "Determinism and numerical reproducibility"
+ ],
+ "stats": [
+  {
+   "value": "3",
+   "label": "tokens spent at startup to settle the question"
+  },
+  {
+   "value": "2",
+   "label": "runs of the same micro-batch, one per convention"
+  },
+  {
+   "value": "64",
+   "label": "output values checksummed per sequence"
+  }
+ ],
+ "lede": "The mining engine takes an input that tells it which token's hidden state to gather for each sequence. The vendor's documentation leaves its convention open. Those hidden states feed a corpus of hundreds of millions of vectors that my research clusters and measures. The silent kind of error, which the detector in A detector for a silent corruption exists to catch after the fact, is the kind worth refusing to risk at all. So the runtime asks the engine, during warm-up. The output is decoded in software for the checksum, so no assumption about the output format leaks into the test.",
+ "quote": "A systematic off-by-one would corrupt every vector in the same way, and the corruption would look like a slightly different model rather than a bug.",
+ "evidence": [
+  "Defensive integration with vendor runtimes: a startup self-test that runs a 3-token micro-batch under both readings of an ambiguous engine input and refuses to start unless exactly one is consistent.",
+  "Data integrity for embedding corpora: hundreds of millions of hidden-state vectors guarded against a systematic off-by-one that would look like a different model rather than a bug.",
+  "Numerical verification: checksums over the first 64 output values per sequence, decoded in software, with the proven convention frozen for the life of the process."
+ ],
+ "problem": "proof",
+ "canonical": "https://coreyjames.ai/stories/asking-the-engine-what-it-meant/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/asking-the-engine-what-it-meant"
+}

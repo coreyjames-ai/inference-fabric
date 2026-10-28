@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/three-shards-that-move-together/",
+ "kind": "story",
+ "title": "Three shards that move together",
+ "subtitle": "Cluster, member and phantom vector files are interdependent, so they activate together in one transaction or not at all, only after the files are confirmed on disk, with a single-active invariant the database enforces",
+ "systems": [
+  "inference-fabric",
+  "postgresql-fabric"
+ ],
+ "technologies": [
+  "PostgreSQL",
+  "Rust",
+  "Idempotency, exactly-once effects and crash recovery",
+  "Large-scale GPU data pipelines"
+ ],
+ "stats": [
+  {
+   "value": "3",
+   "label": "vector files that activate in one transaction or not at all"
+  },
+  {
+   "value": "1",
+   "label": "active generation per schema and kind, held by a unique index"
+  },
+  {
+   "value": "2",
+   "label": "generations kept so a rollback has somewhere to go"
+  }
+ ],
+ "lede": "The GPU analytics in Where a cluster sits read three kinds of vector file: the cluster centroids, the members with their per-cluster offsets, and the phantom candidates. The member offsets index into the centroid file, and the phantoms are scored against both. A reader that saw a new centroid file beside an old member file would compute nonsense without an error. So the three files form a coupled set, and the set is the unit of activation. Each kind is built by its own request, and the three requests share a coupled-set identifier. The activation function in the database checks the whole set, and a unique index guards the result.",
+ "quote": "A partial activation is impossible by construction rather than by convention.",
+ "evidence": [
+  "Transactional artifact management: 3 interdependent vector files activated together in one PostgreSQL transaction or not at all, with a unique index allowing 1 active generation per kind.",
+  "Fail-closed artifact pipelines: generations checked on disk before activation, missing as a terminal status, and 2 generations kept so a rollback has somewhere to go.",
+  "Deterministic data layout: file names carrying kind and generation, and row order fixed so two builds of the same data are the same bytes, each shard signed with a collision-resistant hash."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/three-shards-that-move-together/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/three-shards-that-move-together"
+}

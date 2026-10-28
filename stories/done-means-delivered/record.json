@@ -1,0 +1,37 @@
+{
+ "url": "https://coreyjames.ai/stories/done-means-delivered/",
+ "kind": "story",
+ "title": "Done means delivered",
+ "subtitle": "A result counts as delivered only after it has been written to the receiver's socket, and polling a job costs what is ready rather than what is pending",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Append-only log and journal design",
+  "Idempotency, exactly-once effects and crash recovery",
+  "Rust",
+  "Binary wire protocol design"
+ ],
+ "stats": [
+  {
+   "value": "1 scan",
+   "label": "rebuilds every result after a restart"
+  },
+  {
+   "value": "1 job id",
+   "label": "set once per connection scopes every poll"
+  }
+ ],
+ "lede": "The input side of my broker is told in Millions of queued items that were not there: two-phase dispatch and in-place tombstones made the count of tokens received equal the count routed, to the token. The output side had the same disease in mirror image. A result could be marked finished, handed to a poller, and lost between the broker's memory and the receiver's hands. So the completion side got the same discipline, and polling got a data structure that scales with what is ready. Results from the GPUs are written to completion segments, append-only files. Recovery after a restart is a scan of those segments, so a result that reached disk is never forgotten by a crash.",
+ "quote": "A result can be re-offered, and it is never silently gone.",
+ "evidence": [
+  "Exactly-once delivery and crash recovery: a result counts as delivered only after it is flushed to the receiver's socket and confirmed, so a receiver that dies is offered the same results again.",
+  "Append-only log design: results written to completion segments that 1 scan rebuilds after a restart, with a committed offset as the readable boundary.",
+  "Message broker and queue design: a job id set once per connection and job-scoped ready queues, so a poll costs what is ready rather than the whole pending backlog."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/done-means-delivered/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/done-means-delivered"
+}

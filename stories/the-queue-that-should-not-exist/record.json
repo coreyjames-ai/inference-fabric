@@ -1,0 +1,41 @@
+{
+ "url": "https://coreyjames.ai/stories/the-queue-that-should-not-exist/",
+ "kind": "story",
+ "title": "The queue that should not exist",
+ "subtitle": "I built an inference queue manager with two-stage backpressure and permit-carrying requests, then found the runtime already had a token-based queue, and reduced mine to a wrapper",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Rust",
+  "Capacity engineering, backpressure and load testing",
+  "NVIDIA TensorRT-LLM",
+  "Contract-first interface design"
+ ],
+ "stats": [
+  {
+   "value": "64",
+   "label": "requests in flight at most, bounded by a channel"
+  },
+  {
+   "value": "~1,200",
+   "label": "lines in the wrapper that remains"
+  },
+  {
+   "value": "1,600",
+   "label": "lines in the token queue it almost duplicated"
+  }
+ ],
+ "lede": "Between the services that need text generated and the engine that generates it, I built a queue manager. It was a good one. Then I read the runtime underneath it properly. The saturated inference runtime already had a token-capacity queue: a lock-free multi-producer queue that reserved token budget with an atomic compare-and-swap, drained up to the engine's batch token limit, and returned a typed backpressure error when full. It did at the token level, where the engine actually has limits, what my manager did at the request level.",
+ "quote": "Two layers of backpressure with different units would have fought each other, and the request-level one would have won by starving the token-level one of work.",
+ "evidence": [
+  "Backpressure design: a request-level queue with permit-carrying requests, at most 64 in flight and the permit released on every path, built and then reduced to a wrapper.",
+  "Inference serving architecture: the runtime's lock-free token-capacity queue recognised as doing admission where the engine has its limits, and admission delegated to it.",
+  "Software architecture simplification: a second backpressure layer in different units removed before it could starve the token queue; the wrapper is about 1,200 lines and the queue 1,600."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/the-queue-that-should-not-exist/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-queue-that-should-not-exist"
+}

@@ -1,0 +1,49 @@
+{
+ "url": "https://coreyjames.ai/stories/engines-for-the-card-you-have/",
+ "kind": "story",
+ "title": "Engines for the card you have",
+ "subtitle": "One calibrated FP8 checkpoint, a dozen inference engines sized to two consumer Blackwell GPUs, and the benchmarks that decided what the tiers would be",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "NVIDIA TensorRT-LLM",
+  "NVIDIA TensorRT",
+  "Model quantization",
+  "GPU inference engine engineering",
+  "KV-cache engineering",
+  "Performance engineering and benchmarking",
+  "Docker"
+ ],
+ "stats": [
+  {
+   "value": "7.5 GB",
+   "label": "engine footprint on disk, every tier"
+  },
+  {
+   "value": "3.5 s",
+   "label": "engine load time"
+  },
+  {
+   "value": "+56%",
+   "label": "throughput at a 70 percent shared prefix on the larger card"
+  },
+  {
+   "value": "6",
+   "label": "lines changed in the vendor model graph"
+  }
+ ],
+ "lede": "A built inference engine is a commitment to one GPU, one precision and one set of limits. It will load on that card and refuse any other, it holds exactly the batch and token budget it was built for, and it carries the key-value cache layout it was given. The fleet that reached 163,000 tokens per second in From 44K to 163K tokens per second ran on engines I built this way, a dozen of them from one checkpoint, each sized to the card in front of me. The model is a 7-billion-parameter dense instruction model. I quantize it once: FP8 weights and an FP8 key-value cache, calibrated, with the output head left in high precision.",
+ "quote": "Those numbers are why the broker groups batches by prefix.",
+ "evidence": [
+  "TensorRT and TensorRT-LLM engineering: 12 engines from one quantized FP8 checkpoint, sized per card, each 7.5 GB on disk with a 3.5 s load.",
+  "GPU inference optimisation: a token-budget tier sweep on the 32 GB card from 16,847 to 43,680 tokens per second.",
+  "KV-cache engineering: caching measured on the real prompt structure, +56% throughput at a 70 percent shared prefix on the larger card.",
+  "Hidden-state extraction from LLMs: 6 lines changed in the vendor model graph so every decoder model built from the tree exposes its hidden state."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/engines-for-the-card-you-have/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/engines-for-the-card-you-have"
+}

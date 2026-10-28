@@ -1,0 +1,43 @@
+{
+ "url": "https://coreyjames.ai/stories/millions-of-queued-items-that-were-not-there/",
+ "kind": "story",
+ "title": "Millions of queued items that were not there",
+ "subtitle": "Fixing what 'done' meant in a GPU work broker until the token ledger balanced to zero",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Rust",
+  "Append-only logs",
+  "Memory-mapped storage",
+  "TCP protocol design",
+  "Distributed-systems accounting",
+  "Prometheus and Grafana"
+ ],
+ "stats": [
+  {
+   "value": "6.5 M",
+   "label": "items that had ceased to exist between handoff and GPU"
+  },
+  {
+   "value": "12.3 B",
+   "label": "tokens received afterwards, and the same routed"
+  },
+  {
+   "value": "2",
+   "label": "failures with one root: loss under load, duplicates after a restart"
+  }
+ ],
+ "lede": "The broker's registry and its storage disagreed by millions of items. Somewhere between a producer handing work in and a GPU finishing it, that work had ceased to exist without a trace. I traced it to a definition: the broker counted an item as consumed the moment it was read, and dropped it if the consumer's channel happened to be full. I redefined \"done\" as acknowledged on completion, and rebuilt the accounting around that until received and routed agreed to the token. Two problems with one root. Work disappeared under load and nothing reported it: the registry believed the items were pending, the storage no longer had them, and the GPUs had never seen them.",
+ "quote": "The alternative was a system that was fast and occasionally lost millions of items.",
+ "evidence": [
+  "Exactly-once delivery and crash recovery: done redefined as delivered and acknowledged in a GPU work broker, so a full channel delays work and a restart leaves work held by GPU workers alone.",
+  "Distributed systems correctness: 6.5 M items that had ceased to exist between handoff and GPU traced to one root, the broker's definition of done.",
+  "Observability and alerting: accounting panels that show tokens received and routed side by side, 12.3 B of each afterwards with a difference of zero."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/millions-of-queued-items-that-were-not-there/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/millions-of-queued-items-that-were-not-there"
+}

@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/a-doorbell-the-gpu-waits-on/",
+ "kind": "story",
+ "title": "A doorbell the GPU waits on",
+ "subtitle": "Batches cross from the CPU to the GPU through a pinned ring and a 64-byte doorbell the GPU's stream waits on directly, with no CPU synchronisation; and why that path is used for the extraction engines and left off for the vendor's executor",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "CUDA Driver API",
+  "GPU memory management",
+  "C++",
+  "Rust",
+  "Binary wire protocol design"
+ ],
+ "stats": [
+  {
+   "value": "1 : 1",
+   "label": "one producer, the filler thread; one consumer, the decode thread"
+  },
+  {
+   "value": "10",
+   "label": "retries of 1 ms on a full ring, then a block; a batch is never dropped"
+  },
+  {
+   "value": "0",
+   "label": "host threads between a publish and the GPU starting work"
+  }
+ ],
+ "lede": "The batch filler writes a batch into memory the GPU can read directly, and the GPU's stream begins work the instant the batch is published, without a host thread noticing and launching anything. The CUDA driver has a primitive for exactly this, a stream operation that blocks until a 64-bit value in memory reaches a threshold, and the runtime's hot queue is built around it. Batches live in a ring of pinned host memory, mapped for direct GPU access and write-combined for fast CPU writes, with pages pre-faulted at warm-up so no first-touch fault lands on the hot path.",
+ "quote": "The fastest handoff from a CPU producer to a GPU consumer is one in which neither side waits on the other's clock.",
+ "evidence": [
+  "CUDA driver programming: a stream operation that waits on a 64-byte doorbell in mapped pinned memory, so the GPU starts a batch with no host thread in the loop.",
+  "Lock-free and zero-copy data paths: a single-producer single-consumer pinned ring of write-combined, pre-faulted pages that pads at the wrap and never drops a batch, 10 bounded retries then a block.",
+  "GPU memory management: the pinned path enabled for a device-reading extraction backend and kept off for a CPU-reading executor, with a counter that fires on a mismatch."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/a-doorbell-the-gpu-waits-on/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-doorbell-the-gpu-waits-on"
+}

@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/machinery-i-built-and-then-did-not-need/",
+ "kind": "story",
+ "title": "Machinery I built and then did not need",
+ "subtitle": "Fixed-size epochs and dense slots were built so decode steps could be captured as CUDA graphs; profiling showed the vendor's executor already does it. What I kept, what I stopped relying on, and the rule I took from it",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "NVIDIA TensorRT-LLM",
+  "Rust",
+  "GPU memory management",
+  "Performance engineering and benchmarking"
+ ],
+ "stats": [
+  {
+   "value": "−6.8%",
+   "label": "host key-value offload, set aside as a rejected idea"
+  },
+  {
+   "value": "−7.5%",
+   "label": "class-aware batching on average, also rejected"
+  },
+  {
+   "value": "−36%",
+   "label": "class-aware batching at peak"
+  }
+ ],
+ "lede": "CUDA graphs capture a sequence of kernel launches once and replay it without launch overhead, and a decode loop that runs the same step hundreds of thousands of times looks like the ideal candidate. Capture has a condition, though: the shapes must be stable. So I built the machinery that would make the runtime's decode steps capturable. An epoch is a span of steps with a fixed number of active slots. Slots are dense, so a batch of a given size always has the same layout; the map from sequence to slot is a bit vector with constant-time lookup; and a change in key-value-cache bucket falls back to eager execution for that step without ending the epoch.",
+ "quote": "Read the library before reimplementing it, and measure before building the thing the measurement would justify.",
+ "evidence": [
+  "GPU profiling and performance analysis: CUDA graph replay measured against eager execution before capture was wired in, kernel time 30.77 against 30.81 billion nanoseconds.",
+  "TensorRT and TensorRT-LLM engineering: established that the vendor's executor already captures and replays graphs internally, so the planned graph-capture work was dropped.",
+  "Inference runtime design: epochs with a fixed slot count, dense slots and a constant-time bit-vector slot map, kept for slot integrity after their first purpose went away.",
+  "Performance benchmarking methodology: rejected ideas kept with their measurements, host key-value offload at -6.8% and class-aware batching at -7.5% on average and -36% at peak."
+ ],
+ "problem": "proof",
+ "canonical": "https://coreyjames.ai/stories/machinery-i-built-and-then-did-not-need/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/machinery-i-built-and-then-did-not-need"
+}

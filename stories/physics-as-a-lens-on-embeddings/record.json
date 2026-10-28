@@ -1,0 +1,41 @@
+{
+ "url": "https://coreyjames.ai/stories/physics-as-a-lens-on-embeddings/",
+ "kind": "story",
+ "title": "Physics as a lens on embeddings",
+ "subtitle": "A characteristic length scale from a histogram median, then potential depth, curvature, escape probability, superposition, interference and entanglement as cluster metrics",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "CUDA C++",
+  "GPU numerical kernel design",
+  "ML evaluation methodology"
+ ],
+ "stats": [
+  {
+   "value": "256",
+   "label": "histogram bins find each cluster's median distance"
+  },
+  {
+   "value": "0.4%",
+   "label": "resolution of the median, with no distance ever stored"
+  },
+  {
+   "value": "2,000",
+   "label": "member cap on the three spectral metrics, kept on the CPU"
+  }
+ ],
+ "lede": "Distances between embeddings are the raw material of every cluster metric, and most metrics use them directly. I wanted a family that treated a cluster as a field: each member a point charge, the centroid a probe, and the shape of the resulting potential as the description of the cluster. The vocabulary is borrowed from physics, the formulas are plain Gaussian kernels, and the metrics turned out to say things the direct statistics do not. A Gaussian kernel needs a width, and a fixed width would make the metrics depend on the embedding model's scale. So each cluster gets its own characteristic scale: a constant times the median of its pairwise distances.",
+ "quote": "I kept them out of the GPU count rather than put a kernel with a silent size limit on the card.",
+ "evidence": [
+  "Embedding analytics and cluster metrics: physics-style field metrics for embedding clusters, depth, curvature, escape probability, superposition and interference, computed in one streaming pass over the members.",
+  "CUDA kernel development: each cluster's length scale found from a 256-bin shared-memory histogram of its pairwise distances, at 0.4% resolution with no distance ever stored.",
+  "Quadratic GPU kernels without materialised matrices: entanglement computed over a tiled upper triangle of member pairs with no Gram matrix formed.",
+  "Engineering judgment on GPU limits: three spectral metrics kept as CPU reference code with a 2,000-member cap rather than a GPU kernel with a silent size limit."
+ ],
+ "problem": "embedding-analytics",
+ "canonical": "https://coreyjames.ai/stories/physics-as-a-lens-on-embeddings/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/physics-as-a-lens-on-embeddings"
+}

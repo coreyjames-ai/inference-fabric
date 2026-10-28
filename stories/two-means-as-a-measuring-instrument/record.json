@@ -1,0 +1,41 @@
+{
+ "url": "https://coreyjames.ai/stories/two-means-as-a-measuring-instrument/",
+ "kind": "story",
+ "title": "Two-means as a measuring instrument",
+ "subtitle": "Exactly three Lloyd iterations, seeded at the first and last member, as the fixed definition behind clustering tendency, fragmentation, sub-cluster count and silhouette",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "CUDA C++",
+  "GPU numerical kernel design",
+  "Determinism and numerical reproducibility"
+ ],
+ "stats": [
+  {
+   "value": "4",
+   "label": "cluster metrics read from one fixed split"
+  },
+  {
+   "value": "0.5M",
+   "label": "members per second, about half a million, linear in size"
+  },
+  {
+   "value": "1.2 ms",
+   "label": "or less for the silhouette on the clusters it meets"
+  }
+ ],
+ "lede": "Does this cluster want to be two clusters? The usual answer is to run k-means with k equal to two and look at the result, and the usual problem is that k-means is an optimiser: it runs until it converges, converges somewhere different depending on its seeds, and gives a different answer on a different day. I wanted the answer to be a metric, which means a fixed procedure with a fixed result. So the two-means split in my engine is defined as a measuring instrument, and four metrics read from it. One block per cluster. A first pass computes the single-centroid inertia, the sum of squared distances to the cluster's own centroid.",
+ "quote": "A converged k-means gives a better split and a worse metric.",
+ "evidence": [
+  "Deterministic GPU computation: a fixed two-means procedure, first and last member as seeds and exactly three Lloyd iterations, so a cluster splits the same way on the GPU and in the CPU reference.",
+  "CUDA kernel development: one block per cluster with no atomics and about 12 KB of shared memory, at about 0.5M members a second, linear in size.",
+  "Embedding analytics and cluster metrics: four metrics read from one split, tendency, fragmentation, sub-cluster count and silhouette, the silhouette in 1.2 ms or less for the clusters it meets.",
+  "Measurement design: a fixed instrument chosen over a converged optimiser, because a decision rule needs a number that is comparable across a corpus and across runs."
+ ],
+ "problem": "embedding-analytics",
+ "canonical": "https://coreyjames.ai/stories/two-means-as-a-measuring-instrument/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/two-means-as-a-measuring-instrument"
+}

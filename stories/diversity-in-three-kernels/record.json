@@ -1,0 +1,45 @@
+{
+ "url": "https://coreyjames.ai/stories/diversity-in-three-kernels/",
+ "kind": "story",
+ "title": "Diversity in three kernels",
+ "subtitle": "Why entropy over pairwise distances needs a second pass, and how redundancy, information density, coverage and concept breadth come out of the same tiles",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "CUDA C++",
+  "GPU numerical kernel design",
+  "Determinism and numerical reproducibility"
+ ],
+ "stats": [
+  {
+   "value": "16 × 64",
+   "label": "pair tiles, one atomic per tile for the minimum and maximum"
+  },
+  {
+   "value": "20",
+   "label": "histogram bins in shared memory, flushed once per block"
+  },
+  {
+   "value": "5 B",
+   "label": "pairwise distances recomputed rather than stored"
+  },
+  {
+   "value": "1",
+   "label": "entropy score for a perfectly even spread"
+  }
+ ],
+ "lede": "A cluster of embeddings can be tight and still be useless, because every member says the same thing. The diversity family measures the opposite of redundancy: how much of the cluster is distinct, how evenly its members are spread, and how broad the concept it covers is. Five of those metrics come from pairwise distances, and one of them, entropy, forced the design into three kernels where one would have been nicer. Entropy of the pairwise distances needs a histogram, and a histogram needs its bin edges before the first distance is counted. The edges come from the minimum and maximum distance in the cluster, which are not known until every pair has been visited.",
+ "quote": "One pass cannot do both.",
+ "evidence": [
+  "CUDA kernel development: a diversity family split into a statistics pass, a histogram pass and a finalize, because entropy needs its range before its bins.",
+  "GPU numerical methods: float minimum and maximum carried as compare-and-swap loops with one atomic per 16 x 64 tile, and a 20-bin shared-memory histogram.",
+  "Embedding analytics and cluster metrics: entropy, coverage, redundancy, information density and concept breadth from the same tiles, thresholds fixed at 0.9 and 0.85 so scores compare across runs.",
+  "GPU memory trade-offs: 5 billion pairwise distances recomputed rather than stored."
+ ],
+ "problem": "embedding-analytics",
+ "canonical": "https://coreyjames.ai/stories/diversity-in-three-kernels/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/diversity-in-three-kernels"
+}

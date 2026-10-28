@@ -1,0 +1,43 @@
+{
+ "url": "https://coreyjames.ai/stories/a-second-engine-behind-the-same-door/",
+ "kind": "story",
+ "title": "A second engine behind the same door",
+ "subtitle": "The vendor's executor could not run engines with no key-value cache or an extra output, so a raw-TensorRT backend went in behind the same C interface, and the Rust side never knew",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "NVIDIA TensorRT",
+  "NVIDIA TensorRT-LLM",
+  "C++",
+  "Hidden-state extraction",
+  "Contract-first interface design"
+ ],
+ "stats": [
+  {
+   "value": "8 KB",
+   "label": "copied back to the host per sequence"
+  },
+  {
+   "value": "128",
+   "label": "tokens into a mining engine, for one forward pass"
+  },
+  {
+   "value": "6 lines",
+   "label": "changed in the vendor's model graph to gather the output to the last token"
+  }
+ ],
+ "lede": "Hidden-state extraction needs an engine that generates nothing. I built those engines, in Engines for the card you have, and the vendor's executor refused to run them. The runtime has a Rust half that talks to the broker and a C++ half that talks to the GPU, joined by a C interface. So the rule for the second backend was no new configuration surface, no Rust-visible behaviour, and the engine's own tensor enumeration as the only source of truth about what it wants. The C++ library detects the backend kind from the engine's configuration and, for a mining engine, loads it through the raw TensorRT runtime rather than the executor. All of the work happens once, at load.",
+ "quote": "I did not want the Rust half, the provisioner or the broker to know that mining engines were different.",
+ "evidence": [
+  "TensorRT and TensorRT-LLM engineering: a raw TensorRT backend behind the same C interface for engines with no key-value cache and an extra output, invisible to the Rust side.",
+  "Hidden-state extraction: output gathered to the last token by a 6-line graph change, so a batch of 2,000 copies 16 MB to the host instead of 4 GB.",
+  "Zero-allocation inference paths: every tensor checked and every buffer allocated once at load, each batch bound in three phases with nothing resolved by name at run time.",
+  "Architecture discipline: a first mining path that cloned 13 MB per sequence across 1,600 sequences and copied 300 lines of start-up code was deleted for one path."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/a-second-engine-behind-the-same-door/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-second-engine-behind-the-same-door"
+}

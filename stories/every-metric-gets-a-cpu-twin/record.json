@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/every-metric-gets-a-cpu-twin/",
+ "kind": "story",
+ "title": "Every metric gets a CPU twin",
+ "subtitle": "Thirty-eight GPU cluster metrics defined by a nine-thousand-line CPU reference library, and a three-way consistency check between kernels, references and documentation",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "CUDA C++",
+  "Rust",
+  "Determinism and numerical reproducibility",
+  "GPU numerical kernel design",
+  "ML evaluation methodology"
+ ],
+ "stats": [
+  {
+   "value": "9,000",
+   "label": "lines of plain Rust that define every metric"
+  },
+  {
+   "value": "32",
+   "label": "Rust integration tests, plus fifteen CUDA test files"
+  },
+  {
+   "value": "3",
+   "label": "spectral metrics that exist only as the CPU reference"
+  }
+ ],
+ "lede": "A GPU kernel that computes a statistic is a poor definition of that statistic. It is tuned for throughput and it reorders its reductions. So every metric my CUDA engine computes exists twice: once as a kernel and once as plain Rust on the CPU, and the CPU version is the definition. The reference library is about 9,000 lines across thirteen modules, cohesion, diversity, substructure, spatial, dual-space, quantum, spectral, sigma, composites, exact search and top-k among them. The kernels are checked against it, and the documentation is checked against both. The reference is written for clarity, not speed, so a reader can confirm the formula by inspection.",
+ "quote": "When a kernel is wrong, it is wrong at speed.",
+ "evidence": [
+  "Numerical verification of GPU code: every GPU metric checked against a CPU reference, about 9,000 lines of plain Rust that defines each metric.",
+  "Test engineering for CUDA: 32 Rust integration tests and fifteen CUDA test files, with tolerances derived from the arithmetic rather than tuned to pass.",
+  "Deterministic GPU computation: search results held to zero tolerance by position tie-breaks and a seeded host-side draw."
+ ],
+ "problem": "proof",
+ "canonical": "https://coreyjames.ai/stories/every-metric-gets-a-cpu-twin/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/every-metric-gets-a-cpu-twin"
+}

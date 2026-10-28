@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/a-detector-for-a-silent-corruption/",
+ "kind": "story",
+ "title": "A detector for a silent corruption",
+ "subtitle": "How the hidden-state extraction backend proves which token it is reading before it writes tens of millions of rows",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "NVIDIA TensorRT",
+  "C++",
+  "Hidden-state extraction",
+  "Dense 7B-class models",
+  "NVIDIA Blackwell GPUs"
+ ],
+ "stats": [
+  {
+   "value": "2",
+   "label": "plausible gather conventions, and the engine accepts either"
+  },
+  {
+   "value": "0.1%",
+   "label": "checksum change that proves the engine reads the input"
+  },
+  {
+   "value": "25,800",
+   "label": "tokens per second over 10.8 million tokens of extraction"
+  }
+ ],
+ "lede": "The extraction mode of my inference runtime reads a model's internal representation, the input to its language-model head, for every probe, in one forward pass with no generation, at very large batch. The engine's packed-sequence interface takes an input that tells the attention plugin which token's state to gather for each sequence. Two conventions are plausible: the cumulative length, or the cumulative length minus one. The documentation did not settle which this engine expected. A wrong guess still produces well-formed vectors, just the wrong token's, or the next sequence's first token, for every probe. The result would be a silently corrupt dataset of tens of millions of rows. So the backend proves the convention before it extracts anything.",
+ "quote": "The test runs once per engine load, and it is the difference between a dataset and a disaster.",
+ "evidence": [
+  "TensorRT and TensorRT-LLM engineering: a raw TensorRT hidden-state extraction backend at 25,800 tokens per second over 10.8 million tokens of extraction.",
+  "Numerical verification of inference engines: a warm-up detector that tries both of 2 plausible gather conventions and needs a 0.1% checksum change to prove the engine reads its input.",
+  "Data provenance for ML pipelines: each hidden state written as a self-describing payload with magic, dtype, shape and hash, appended with a lineage-checked catalog row."
+ ],
+ "problem": "proof",
+ "canonical": "https://coreyjames.ai/stories/a-detector-for-a-silent-corruption/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-detector-for-a-silent-corruption"
+}

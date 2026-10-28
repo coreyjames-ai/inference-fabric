@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/recovery-that-trusts-only-what-happened/",
+ "kind": "story",
+ "title": "Recovery that trusts only what happened",
+ "subtitle": "Tombstones as the single source of truth, a parallel scan on restart, a stale entry rewound before it is forgotten, a reconnecting GPU that reports what it still holds, and advisory checks that may never decide",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Idempotency, exactly-once effects and crash recovery",
+  "Append-only log and journal design",
+  "Rust",
+  "Distributed systems reliability"
+ ],
+ "stats": [
+  {
+   "value": "3",
+   "label": "kinds of interruption, each once a path to loss or duplicate work"
+  },
+  {
+   "value": "1 rule",
+   "label": "recovery believes only what physically happened"
+  },
+  {
+   "value": "100 ms",
+   "label": "between tombstone flushes to disk"
+  }
+ ],
+ "lede": "A broker that holds tens of millions of queued items on disk has to survive three kinds of interruption: its own restart, a GPU consumer disconnecting mid-batch, and an item that was admitted for dispatch and then never heard of again. Each of those had, at one point, a path to permanent loss or duplicate work. The design that closed them rests on one rule: recovery believes only evidence of events that physically happened, and nothing that was merely intended. The durability model behind it is one of my filed inventions, Family Two, and this is how it behaves in the broker.",
+ "quote": "An offset says how far dispatch had reached; a tombstone says what was finished.",
+ "evidence": [
+  "Exactly-once delivery and crash recovery: restart recovery that believes only tombstones written by completions and ignores persisted offsets, so an item past the offset but unfinished is never lost.",
+  "Distributed systems correctness: stale or disconnected work reclaimed by rewinding the readable offset before dropping the pending entry, the rewind bounded by what was outstanding.",
+  "Resilient GPU consumers: a consumer SDK that keeps working while the broker is away and re-registers the sequence ids it still holds, ending duplicate work after reconnects.",
+  "Message broker and queue design: an advisory index demoted to logging after it starved a GPU with a full backlog on disk; only the authoritative segment read decides."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/recovery-that-trusts-only-what-happened/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/recovery-that-trusts-only-what-happened"
+}

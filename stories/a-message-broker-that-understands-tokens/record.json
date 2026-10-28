@@ -1,0 +1,44 @@
+{
+ "url": "https://coreyjames.ai/stories/a-message-broker-that-understands-tokens/",
+ "kind": "story",
+ "title": "A message broker that understands tokens",
+ "subtitle": "Scheduling GPU inference by the shape of the work, so two different cards ran at a 99.9 percent cache hit rate with almost no padding",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Rust",
+  "Custom TCP wire protocols",
+  "Memory-mapped storage",
+  "Batch scheduling",
+  "TensorRT-LLM",
+  "Prometheus and Grafana",
+  "NVIDIA Blackwell GPUs"
+ ],
+ "stats": [
+  {
+   "value": "0.421%",
+   "label": "padding waste across one shared backlog"
+  },
+  {
+   "value": "0",
+   "label": "shape switches mid-stream"
+  },
+  {
+   "value": "24,000",
+   "label": "lines of Rust in four crates"
+  }
+ ],
+ "lede": "A general-purpose queue moves bytes and knows nothing about what they cost to run. GPU inference cost depends almost entirely on the shape of the work: how long the prompts are, how much each prompt shares with its neighbours, how much padding a batch carries. I built a broker whose unit of scheduling is the token. It organises incoming work so that each batch is shape-pure, packs batches to each GPU's declared limits, and delivers them so the engine's cache keeps hitting. I had a backlog of billions of tokens to generate and two GPUs of different sizes to do it with. A conventional queue would hand each card whatever came next.",
+ "quote": "Four integers describe any consumer, including ones that do not exist yet.",
+ "evidence": [
+  "Token-aware scheduling: a Rust broker that batches GPU inference by prompt shape, with 0.421% padding waste across one shared backlog and 0 shape switches mid-stream.",
+  "Message broker and queue design: a four-crate Rust broker of about 24,000 lines with a disk-backed, shape-pure backlog that survives restarts.",
+  "Inference serving architecture: every consumer described by four numbers, so a 32 GB and a 16 GB NVIDIA Blackwell card drained one backlog at a 99.9 percent cache hit rate."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/a-message-broker-that-understands-tokens/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/a-message-broker-that-understands-tokens"
+}

@@ -1,0 +1,39 @@
+{
+ "url": "https://coreyjames.ai/stories/rebuild-only-what-moved/",
+ "kind": "story",
+ "title": "Rebuild only what moved",
+ "subtitle": "Column-scoped change capture, a rule that chooses a full or a delta rebuild from the size of the change and never from its age, and a segment merge whose output is byte-identical to a full rebuild",
+ "systems": [
+  "inference-fabric",
+  "postgresql-fabric"
+ ],
+ "technologies": [
+  "PostgreSQL",
+  "Rust",
+  "Large-scale GPU data pipelines",
+  "Determinism and numerical reproducibility"
+ ],
+ "stats": [
+  {
+   "value": "4 M",
+   "label": "rows of embeddings the GPU files are built from"
+  },
+  {
+   "value": "2",
+   "label": "paths, delta and full, that must write the same bytes"
+  }
+ ],
+ "lede": "GPU workers read vectors from contiguous files on disk, built from the embedding columns of a relational database: one file of single-precision rows, one of identifiers, and for member vectors a table of offsets that maps each cluster to its range of rows. Rebuilding all of them because a few embeddings changed is a waste, and doing it on a schedule is worse, because age says nothing about whether an embedding is still correct. A trigger on each member table captures inserts and deletes, and captures an update only when the embedding column is different from its old value. Changes land in a pending table and are grouped into batches, so nothing is lost between builds.",
+ "quote": "A delta build must produce exactly the file a full build would have produced, or the two paths diverge and every consumer has to care which one ran.",
+ "evidence": [
+  "Change data capture in PostgreSQL: triggers that capture inserts, deletes and embedding changes into a pending table in batches, so nothing is lost between builds.",
+  "Incremental index builds: a delta rebuild that copies unchanged cluster byte ranges and rewrites only changed clusters, producing the same bytes as a full rebuild over 4 M rows.",
+  "Database-side decision logic: a SQL function choosing none, delta or full rebuild from the size of the change, full past 100,000 pending rows or 10% of the table, with no age term.",
+  "PostgreSQL performance tuning: the capture trigger's per-update function-call overhead identified, with its column-scoped fix stated as open rather than implied away."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/rebuild-only-what-moved/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/rebuild-only-what-moved"
+}

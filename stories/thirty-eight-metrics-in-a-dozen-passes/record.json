@@ -1,0 +1,49 @@
+{
+ "url": "https://coreyjames.ai/stories/thirty-eight-metrics-in-a-dozen-passes/",
+ "kind": "story",
+ "title": "Thirty-eight metrics in a dozen passes",
+ "subtitle": "A hand-written CUDA engine for Blackwell that scores thousands of embedding clusters at once and searches them with the same kernels",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "CUDA C++",
+  "CUDA Driver API",
+  "GPU numerical kernel design",
+  "Approximate nearest-neighbour search",
+  "Rust",
+  "NVIDIA Blackwell GPUs",
+  "Determinism and numerical reproducibility"
+ ],
+ "stats": [
+  {
+   "value": "11×",
+   "label": "faster centroid family at 100,000 members after the rewrite"
+  },
+  {
+   "value": "500K/s",
+   "label": "members through two-means, no atomics"
+  },
+  {
+   "value": "0.85",
+   "label": "minimum recall at ten against exact search, held in CI"
+  },
+  {
+   "value": "11,600",
+   "label": "lines of Rust around about 11,000 of CUDA"
+  }
+ ],
+ "lede": "My distillation research produces millions of embeddings grouped into clusters, and it needs to know, for every cluster, how tight it is, whether it has sub-structure, how it relates to its neighbours, and how much information it carries. That is thirty-eight statistics per cluster, over vectors of 1,024 dimensions, for thousands of clusters at a time. I wrote a CUDA engine for it, from Rust against the driver API, compiled natively for Blackwell, with a CPU reference and equivalence tests for every kernel. The same engine does exact, inverted-file and lattice vector search, and a fused variant computes cluster health as a side effect of the search it was already doing.",
+ "quote": "The quadratic distance matrix never exists.",
+ "evidence": [
+  "CUDA kernel development: a hand-written CUDA engine for NVIDIA Blackwell scoring thirty-eight statistics per cluster over 1,024-dimension vectors, with no sampling and no caps.",
+  "Embedding analytics and cluster metrics: the centroid family made 11x faster at 100,000 members, and two-means at about 500K/s members with no atomics.",
+  "Vector search and ANN indexes: exact, inverted-file and lattice search on the same kernels, with recall at ten held at 0.85 or better against exact search in CI.",
+  "Rust systems engineering: 11,600 lines of Rust around about 11,000 of CUDA, reaching the CUDA 13 driver API through a 300-line safe wrapper."
+ ],
+ "problem": "embedding-analytics",
+ "canonical": "https://coreyjames.ai/stories/thirty-eight-metrics-in-a-dozen-passes/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/thirty-eight-metrics-in-a-dozen-passes"
+}

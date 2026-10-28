@@ -1,0 +1,43 @@
+{
+ "url": "https://coreyjames.ai/stories/throughput-that-finished-nothing/",
+ "kind": "story",
+ "title": "Throughput that finished nothing",
+ "subtitle": "The runtime reported more tokens per second than it ever had while finished sequences fell below one per second; the fix gated new work on how many sequences were already alive",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "NVIDIA TensorRT-LLM",
+  "Token-aware GPU batch scheduling",
+  "Rust",
+  "C++",
+  "Performance engineering and benchmarking"
+ ],
+ "stats": [
+  {
+   "value": "4,096",
+   "label": "sequences per step on the largest engine tier"
+  },
+  {
+   "value": "524,288",
+   "label": "tokens per step on the same tier"
+  },
+  {
+   "value": "~4,100",
+   "label": "sequences active when nothing was finishing"
+  }
+ ],
+ "lede": "The first time the runtime ran the largest engine tier I built for the dense 7B model under full load, the token rate and the completion counter disagreed. The GPU was generating at full speed and finishing nothing. Continuous batching lets the engine admit a new sequence into any step that has room. With no limit on admissions, the runtime filled every slot, and each step then advanced four thousand sequences by one token each. Every sequence made progress, so the token rate was real, and every sequence made progress so slowly that none of them reached its end.",
+ "quote": "Tokens per second is what an inference runtime advertises, and under a batch-oriented workload it can be maximised while delivering nothing.",
+ "evidence": [
+  "GPU inference optimisation: diagnosed a runtime generating at full speed while finishing fewer than one sequence a second with ~4,100 sequences active on a 4,096-sequence engine tier.",
+  "Continuous batching admission control: a high-water and low-water latch on active slots that gates new prefills so the sequences in flight finish and free their slots.",
+  "Inference runtime design in Rust and C++: batching duties split between halves, with continuing decodes always included and the token budget applied only to new prefills, held by a regression test.",
+  "Backpressure design: a decode-loop ladder with a retry buffer served first, broker pulls bounded by free slots and oversized items failed back with empty output."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/throughput-that-finished-nothing/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/throughput-that-finished-nothing"
+}

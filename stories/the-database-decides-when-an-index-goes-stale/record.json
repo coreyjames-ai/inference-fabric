@@ -1,0 +1,39 @@
+{
+ "url": "https://coreyjames.ai/stories/the-database-decides-when-an-index-goes-stale/",
+ "kind": "story",
+ "title": "The database decides when an index goes stale",
+ "subtitle": "Index invalidation moved into SQL triggers and load-time checks, so a stale index cannot be served, and partial builds are failed before the daemon accepts its first connection",
+ "systems": [
+  "inference-fabric",
+  "postgresql-fabric"
+ ],
+ "technologies": [
+  "PostgreSQL",
+  "Approximate nearest-neighbour search",
+  "Rust",
+  "Idempotency, exactly-once effects and crash recovery"
+ ],
+ "stats": [
+  {
+   "value": "2",
+   "label": "triggers in the database that mark an index stale"
+  },
+  {
+   "value": "3",
+   "label": "load-time checks, in order, before a file is trusted"
+  }
+ ],
+ "lede": "An approximate index is a summary of the vectors it was built over. When those vectors change, the index is wrong, and a service that keeps serving it will return confident, stale neighbours with no error. The usual defence is a rule in the application: remember to rebuild. I put the rule in the database instead, where it cannot be forgotten, and backed it with checks at load time and at startup. Vectors live in append-only shards, each with a journal whose entry count advances on every append. A trigger on the catalog marks every active index that covers a shard as stale the moment that shard's journal count advances, with a reason attached.",
+ "quote": "The write that changes the data is the write that invalidates the index.",
+ "evidence": [
+  "Database-enforced invariants: index invalidation moved into PostgreSQL catalog triggers, so the write that changes vector data marks every covering index stale.",
+  "Fail-closed artifact loading: 3 ordered checks before an index file is trusted, kernel version, configuration hash and artifact hash, each mismatch a refusal with its reason.",
+  "Exactly-once delivery and crash recovery: partial index builds failed and their files removed before the daemon binds its listener, a sweep that is a no-op on a clean database.",
+  "Vector search and ANN indexes: search that loads only an active, checked index for a shard set and falls back to the general index, so a stale index is never a candidate."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/the-database-decides-when-an-index-goes-stale/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-database-decides-when-an-index-goes-stale"
+}

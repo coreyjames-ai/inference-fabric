@@ -1,0 +1,50 @@
+{
+ "url": "https://coreyjames.ai/systems/inference-fabric/",
+ "kind": "system",
+ "title": "Inference Fabric",
+ "subtitle": "A throughput-first GPU inference pipeline on consumer NVIDIA hardware: broker, saturated runtime, completion, vector store",
+ "systems": [],
+ "technologies": [
+  "Rust",
+  "C++",
+  "CUDA",
+  "TensorRT-LLM",
+  "FP8 inference",
+  "Memory-mapped storage",
+  "Approximate nearest-neighbour search",
+  "Prometheus and Grafana",
+  "NVIDIA Blackwell GPUs"
+ ],
+ "stats": [
+  {
+   "value": "15",
+   "label": "hand-written CUDA kernel families, native Blackwell binaries, no JIT"
+  },
+  {
+   "value": "0",
+   "label": "allocations after the first second of a profile, down from 4,236"
+  },
+  {
+   "value": "4.95 M",
+   "label": "tasks on one GPU over ten hours, zero retries"
+  },
+  {
+   "value": "126K",
+   "label": "lines of first-party Rust, C++ and CUDA across six trees"
+  }
+ ],
+ "lede": "Large offline model workloads are throughput problems. Synthetic data, probe generation, hidden-state extraction and bulk embedding analytics do not care about response time; they care whether the GPU is busy. A request-and-response serving stack wastes GPU time on padding and idle gaps and ties producers to GPUs for hours. I built the Inference Fabric for throughput. Producers drop millions of tokenised tasks and walk away. A broker that understands tokens organises the work so GPUs barely pad. Pull-based GPU workers stay saturated on mixed hardware. Results land in the database when they finish. Vector outputs flow into a GPU-native store that searches and scores cluster quality.",
+ "quote": "I did not replace NVIDIA's inference; I fed it.",
+ "evidence": [
+  "High-throughput batch inference: a 7-billion-parameter dense model in FP8 at 163,000 tokens per second on two NVIDIA Blackwell GPUs, and 4.95 M tasks on one GPU over ten hours with zero retries.",
+  "Token-aware scheduling: a durable broker on memory-mapped append-only logs that groups work by token shape and packs to each GPU's declared limits, with 0.42% padding waste and 99.9% prefix cache hits across two cards.",
+  "TensorRT and TensorRT-LLM engineering: a pull-based saturation runtime around stock TensorRT-LLM kernels with a zero-allocation hot path, 4,236 allocations in the first second of an Nsight profile and none after.",
+  "CUDA kernel development: fifteen hand-written kernel families compiled to native Blackwell binaries with no JIT, computing 38 per-cluster health metrics and exact, inverted-file and lattice vector search, each with a CPU reference.",
+  "Distributed systems correctness: work retired only when its completion is acknowledged, so a restart never re-runs work the GPUs already hold, with 12.3 B tokens received and 12.3 B routed, a difference of zero.",
+  "Cloud GPU provisioning with cost controls: one call stands up a consumer node locally, on a LAN host over mutual TLS or on rented cloud spot capacity, behind a fail-closed daily dollar budget."
+ ],
+ "canonical": "https://coreyjames.ai/systems/inference-fabric/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric"
+}

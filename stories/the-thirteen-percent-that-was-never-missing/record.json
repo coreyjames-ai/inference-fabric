@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/the-thirteen-percent-that-was-never-missing/",
+ "kind": "story",
+ "title": "The thirteen percent that was never missing",
+ "subtitle": "A profile said thirteen percent of the GPU was idle; it was the share of time in non-matrix kernels. Reading what each metric measured before optimising found utilisation at 98.7 percent",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "NVIDIA Nsight Systems",
+  "GPU profiling and tracing",
+  "Performance engineering and benchmarking",
+  "NVIDIA TensorRT-LLM"
+ ],
+ "stats": [
+  {
+   "value": "98.7%",
+   "label": "streaming-multiprocessor utilisation in the trace"
+  },
+  {
+   "value": "332,965",
+   "label": "kernel launches in sixty seconds"
+  },
+  {
+   "value": "4,236",
+   "label": "memory allocations, every one in the first second"
+  }
+ ],
+ "lede": "An early profiling pass on the inference runtime reported a GPU compute efficiency figure and a gap, and the obvious next step was a programme of work to close the gap. Before starting it, I went back to the profile to find out what the number measured. It was the share of kernel time spent in matrix multiplications. The rest was attention, activation and normalisation kernels, all of them necessary, none of them idle. A sixty-second trace on one consumer Blackwell GPU gave the whole picture. The gap-closing programme would have chased a number that could not move, because the only way to reduce the non-matrix share is to remove the model's own layers.",
+ "quote": "The habit that matters most in performance work: reading the definition of a metric before acting on its value.",
+ "evidence": [
+  "GPU profiling (Nsight): re-read a reported thirteen percent compute gap as necessary non-matrix kernel time and found streaming-multiprocessor utilisation at 98.7%.",
+  "Performance benchmarking methodology: graph capture against eager execution measured at 30.77 against 30.81 billion nanoseconds of kernel time, and launch overhead dropped as a lever.",
+  "Memory discipline in inference runtimes: 4,236 memory allocations in a sixty-second trace of 332,965 kernel launches, every allocation in the first second.",
+  "Measurement discipline: a written rule to define each metric before reading it, compare like with like and write the cache configuration beside every figure."
+ ],
+ "problem": "proof",
+ "canonical": "https://coreyjames.ai/stories/the-thirteen-percent-that-was-never-missing/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-thirteen-percent-that-was-never-missing"
+}

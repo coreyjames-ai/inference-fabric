@@ -1,0 +1,48 @@
+{
+ "url": "https://coreyjames.ai/stories/spend-structure-before-spending-waste/",
+ "kind": "story",
+ "title": "Spend structure before spending waste",
+ "subtitle": "The lane-packing algorithms that let a GPU broker pad 0.4 percent and keep two different cards at a 99.9 percent cache hit rate",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Rust",
+  "Token-aware GPU batch scheduling",
+  "Append-only log and journal design",
+  "Memory-mapped storage",
+  "TensorRT-LLM",
+  "NVIDIA Blackwell GPUs"
+ ],
+ "stats": [
+  {
+   "value": "2,048",
+   "label": "rolling lanes per prompt shape"
+  },
+  {
+   "value": "17,800/s",
+   "label": "lane reuses, against 0.49 new lanes per second"
+  },
+  {
+   "value": "99.9%",
+   "label": "key-value cache hit rate on both cards"
+  },
+  {
+   "value": "12.3 B",
+   "label": "tokens received and the same routed, difference zero"
+  }
+ ],
+ "lede": "Padding is the tax a GPU pays for batching sequences of different lengths, and cache misses are the tax it pays for mixing prompts that share nothing. A queue that moves bytes knows about neither. I built the broker in my inference pipeline to know about both, with a set of algorithms that decide, for every item, which batch it belongs in and when it goes. Two prompts can share a batch cheaply only if they share cacheable structure, the system prompt, the few-shot block, the tool schema, and have similar lengths. Length is cheap to read. Shared structure is not, and the broker must never parse prompts or know the model.",
+ "quote": "A poisoned cache is worse than a restart.",
+ "evidence": [
+  "Token-aware scheduling: shape signatures from ordered prefix hashes and 2,048 rolling lanes per shape, keeping two cards at a 99.9% key-value cache hit rate.",
+  "Batch padding optimisation: a waste threshold that rises from one percent to ten percent with lane pressure, with a 16-token floor and a 128-token cap, for 0.421% padding.",
+  "Message broker and queue design: lane reuse at 17,800/s against 0.49 new lanes per second, and 12.3 B tokens received and routed with a difference of zero.",
+  "Distributed systems correctness: a dispatch loop that yields after 100 milliseconds, after a fill of 3,099 batches blocked heartbeats long enough for healthy GPUs to be declared dead."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/spend-structure-before-spending-waste/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/spend-structure-before-spending-waste"
+}

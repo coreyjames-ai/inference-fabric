@@ -1,0 +1,46 @@
+{
+ "url": "https://coreyjames.ai/stories/removing-the-sampling-caps/",
+ "kind": "story",
+ "title": "Removing the sampling caps",
+ "subtitle": "From kernels that looked at fifty members and twelve hundred pairs to exact statistics over a hundred thousand members, by redesigning every kernel into one of three scaling classes",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "CUDA C++",
+  "GPU numerical kernel design",
+  "Performance engineering and benchmarking",
+  "NVIDIA Blackwell GPUs"
+ ],
+ "stats": [
+  {
+   "value": "1,225",
+   "label": "pairs the old pairwise statistics were capped at"
+  },
+  {
+   "value": "2,000",
+   "label": "member limit for Gram-bounded kernels, refused above it"
+  },
+  {
+   "value": "6",
+   "label": "accumulator types in the shared tile library"
+  },
+  {
+   "value": "20",
+   "label": "legacy kernels kept, with sixteen tests against the references"
+  }
+ ],
+ "lede": "The first generation of my cluster-metric kernels cheated, and I knew it. A cluster of a hundred thousand embeddings was scored from a sample of fifty members. The two-means split and the silhouette ran on fifty-member subsets. This is the story of taking every cap out. The early kernels were written one metric at a time, each with its own loop over members, each accumulating into global memory with atomics. At fifty members, contention on those atomics was invisible. At a hundred thousand it would have dominated, and a pairwise kernel over a hundred thousand members has five billion pairs. Sampling was the quick way to keep both problems out of sight.",
+ "quote": "The numbers came back fast and they were estimates of the thing I wanted rather than the thing itself.",
+ "evidence": [
+  "CUDA kernel development: every cluster-metric kernel sorted into three scaling classes, with Gram-bounded kernels refusing clusters above 2,000 members instead of sampling.",
+  "Embedding analytics and cluster metrics: pairwise statistics once capped at 1,225 pairs computed on every pair, for clusters of up to 100,000 members.",
+  "GPU performance engineering: a shared tile library with 6 accumulator types, and the centroid family at 46.67 ms for 100,000 members.",
+  "Regression testing for kernels: 20 legacy kernels kept, with sixteen tests against the CPU references, so each rewrite has a baseline."
+ ],
+ "problem": "embedding-analytics",
+ "canonical": "https://coreyjames.ai/stories/removing-the-sampling-caps/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/removing-the-sampling-caps"
+}

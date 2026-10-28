@@ -1,0 +1,53 @@
+{
+ "url": "https://coreyjames.ai/stories/from-44k-to-163k-tokens-per-second/",
+ "kind": "story",
+ "title": "From 44K to 163K tokens per second",
+ "subtitle": "Raising one 7-billion-parameter model's throughput on consumer GPUs, one measured layer at a time",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "TensorRT-LLM",
+  "FP8 inference",
+  "CUDA",
+  "Nsight Systems",
+  "Prometheus and Grafana",
+  "Rust",
+  "C++",
+  "Batch scheduling",
+  "NVIDIA Blackwell GPUs"
+ ],
+ "stats": [
+  {
+   "value": "44K",
+   "label": "tokens per second from the clean engine sweep, the baseline"
+  },
+  {
+   "value": "4.95 M",
+   "label": "tasks in a ten-hour run on one GPU, zero retries"
+  },
+  {
+   "value": "96.9%",
+   "label": "streaming-multiprocessor use of the larger card in the two-card window"
+  },
+  {
+   "value": "3",
+   "label": "plausible ideas measured and dropped"
+  }
+ ],
+ "lede": "Stock TensorRT-LLM, set up the obvious way, left most of a consumer GPU idle on bulk generation. I was building a pipeline that would generate and mine tens of millions of items, so idle capacity was the whole cost. I took one model, a 7-billion-parameter dense model in FP8, from about 44,000 tokens per second on a single NVIDIA Blackwell GPU to a five-minute mean of 163,000 across two NVIDIA Blackwell GPUs, with no custom model kernels. Each step was a change to one layer of the serving stack, measured before and after, and the changes that made things slower are on this page next to the ones that worked. The ceiling was never the engine.",
+ "quote": "A throughput figure without its window and hardware is a rumour.",
+ "evidence": [
+  "GPU inference optimisation: a 7B dense model in FP8 taken from about 44,000 tokens per second on one NVIDIA Blackwell GPU to a five-minute mean of 163,000 across two, with no custom model kernels.",
+  "TensorRT and TensorRT-LLM engineering: an engine tier sweep that found the token budget per step to be the largest engine-side lever, with a tuned single card at 90K tokens per second on stock kernels.",
+  "Token-aware scheduling: a shape-aware broker with cache-coherent dispatch feeding a second Blackwell GPU on the same queue, the larger card at 96.9% streaming-multiprocessor use in the two-card window.",
+  "High-throughput batch inference: producers decoupled from the engine so a slow producer can never starve the GPU, and 4.95 M tasks in a ten-hour run on one GPU with zero retries.",
+  "Performance benchmarking methodology: one layer changed at a time against the clean engine sweep, not a stalled early run, with host-memory KV cache (6.8% slower) and custom CUDA graphs (under 1%) measured and dropped.",
+  "LLM quantization: FP8 weights kept on stock kernels after INT4 weights measured slower than FP8 on this hardware."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/from-44k-to-163k-tokens-per-second/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/from-44k-to-163k-tokens-per-second"
+}

@@ -1,0 +1,41 @@
+{
+ "url": "https://coreyjames.ai/stories/the-128-lane-wall/",
+ "kind": "story",
+ "title": "The 128-lane wall",
+ "subtitle": "Padding waste ran under one percent until every shape used all of its 128 lanes, then climbed past 95 percent on a 22-million-item load test; the fix was structural",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Token-aware GPU batch scheduling",
+  "Rust",
+  "Performance engineering and benchmarking",
+  "Capacity engineering, backpressure and load testing"
+ ],
+ "stats": [
+  {
+   "value": "10B",
+   "label": "tokens in the 22-million-item load test that found the wall"
+  },
+  {
+   "value": "0.421%",
+   "label": "padding waste in the two-GPU window after the fix"
+  },
+  {
+   "value": "8",
+   "label": "phases of changes to widen the lane id"
+  }
+ ],
+ "lede": "My broker packs prompts of similar length into lanes so that a batch pads as little as possible. Each lane has a target length, items go to the lane that wastes the least, and a new lane opens when the waste would be too high. The first version gave each shape 128 lanes, because the lane id was a byte and 128 seemed like plenty. A load test showed exactly what plenty was worth. As the run went on, every shape reached a hundred percent lane pressure, meaning every one of its 128 lanes was in use and no new lane could open.",
+ "quote": "Tuning the waste threshold could not help, because the threshold only decides when to open a lane, and no lane could be opened.",
+ "evidence": [
+  "Performance diagnosis: traced padding waste of 95%+ on a 22-million-item load test to a structural budget of 128 lanes per shape, a capacity limit that no threshold tuning could fix.",
+  "Token-aware scheduling: widened the lane id to 16 bits across 8 phases of changes, raising the budget to 2,048 lanes so the pressure-scaled waste threshold could work.",
+  "GPU inference optimisation: padding waste at 0.421% in the two-GPU window after the fix, with average lane pressure at 22% instead of 100%."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/the-128-lane-wall/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/the-128-lane-wall"
+}

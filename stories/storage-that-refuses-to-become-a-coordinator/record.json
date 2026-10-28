@@ -1,0 +1,38 @@
+{
+ "url": "https://coreyjames.ai/stories/storage-that-refuses-to-become-a-coordinator/",
+ "kind": "story",
+ "title": "Storage that refuses to become a coordinator",
+ "subtitle": "A tensor store that appends, returns a stable address and knows nothing about its consumers; the coordinator tables it once had were removed and the boundary is enforced by checks in the build",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Append-only log and journal design",
+  "Rust",
+  "Binary wire protocol design",
+  "Idempotency, exactly-once effects and crash recovery"
+ ],
+ "stats": [
+  {
+   "value": "4",
+   "label": "refusals the build checks for in the source"
+  },
+  {
+   "value": "~800",
+   "label": "lines of acceptance test holding the contract"
+  }
+ ],
+ "lede": "The vector store under my research pipeline receives tensors from the extraction engines and the embedders and hands back an address. For a while it also tracked which consumers had accepted which payloads, de-duplicated by content, and answered questions about consumer schemas, because each of those was convenient for someone. I took them out and wrote the boundary down. A producer sends an envelope. The store parses the envelope, recomputes the content hash over the tensor bytes, and checks the envelope's characteristics against the current generation; any mismatch is a hard reject. It writes a journal entry first, then the payload and the identifier, then a lineage row in the database, and the call returns a reference.",
+ "quote": "Every one of them made the store a coordinator, and a coordinator is a single point of contention and a second source of truth.",
+ "evidence": [
+  "Append-only log design: a tensor store that journals each append before payload and lineage and returns a stable address of generation, shard, row, offset and content hash.",
+  "System boundary design: coordinator duties removed from a storage service, with 4 refusals enforced by build checks that fail if the forbidden patterns reappear.",
+  "Exactly-once delivery and crash recovery: shards replayed and truncated to the last consistent journal entry before the listener binds, with torn tails counted in a metric.",
+  "Backpressure and admission control: a high-water mark answering busy with a retry hint and a client circuit breaker with a half-open probe, held by an acceptance test of about 800 lines."
+ ],
+ "problem": "data-paths",
+ "canonical": "https://coreyjames.ai/stories/storage-that-refuses-to-become-a-coordinator/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/storage-that-refuses-to-become-a-coordinator"
+}

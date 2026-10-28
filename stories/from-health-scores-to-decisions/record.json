@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/from-health-scores-to-decisions/",
+ "kind": "story",
+ "title": "From health scores to decisions",
+ "subtitle": "Five composite scores built from the per-cluster metrics with weights that live in a database table, feeding the pressure model that decides what the corpus does next",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "PostgreSQL",
+  "Rust",
+  "ML evaluation methodology",
+  "SQL"
+ ],
+ "stats": [
+  {
+   "value": "38",
+   "label": "raw metrics per cluster, a diagnosis rather than a decision"
+  },
+  {
+   "value": "2,000",
+   "label": "members, above which the spectral metrics are left null"
+  },
+  {
+   "value": "1 row",
+   "label": "per composite and metric holds every weight"
+  }
+ ],
+ "lede": "Thirty-eight metrics per cluster is a diagnosis. The decisions, split this cluster, merge those two, leave that one alone, are made inside the database by a pressure model, and the pressure model reads five composite scores rather than thirty-eight raw values. This is how the composites are built and why their weights are data rather than code. Each composite is a weighted average over a named subset of the metrics, and each subset answers one question about the cluster. A metric can be missing for a cluster: the spectral metrics above 2,000 members, a question-and-answer metric on a cluster with no pairs, a neighbourhood metric on a cluster with no neighbours yet.",
+ "quote": "A composite that treated a missing value as zero would punish the cluster for the gap.",
+ "evidence": [
+  "Embedding analytics and cluster metrics: 38 raw metrics per cluster folded into five composite health scores that a pressure model reads to split, merge or hold a cluster.",
+  "Robust scoring with missing data: skip-null averaging that renormalises over the weights present and stores the metric count beside each composite instead of reading a gap as zero.",
+  "Configuration as audited data: composite weights held as one row per composite and metric in PostgreSQL, read by both the CPU reference and the SQL that computes the composites.",
+  "Data-driven automation: typed functions inside the database act on split, merge and hold pressures derived from kernel metrics, every step reproducible from the metric definitions."
+ ],
+ "problem": "embedding-analytics",
+ "canonical": "https://coreyjames.ai/stories/from-health-scores-to-decisions/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/from-health-scores-to-decisions"
+}

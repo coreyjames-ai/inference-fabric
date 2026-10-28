@@ -1,0 +1,41 @@
+{
+ "url": "https://coreyjames.ai/stories/shapes-have-a-lifecycle/",
+ "kind": "story",
+ "title": "Shapes have a lifecycle",
+ "subtitle": "Every switch of prompt shape costs a GPU its prefix cache, so the broker stages a shape until it is worth running, warms the next one before the current one drains, and alarms when a shape ran too briefly",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Token-aware GPU batch scheduling",
+  "KV-cache engineering",
+  "Rust",
+  "State machine design for multi-agent workflows"
+ ],
+ "stats": [
+  {
+   "value": "5",
+   "label": "states every prompt shape moves through"
+  },
+  {
+   "value": "99.9%",
+   "label": "key-value hit rate in a five-minute two-GPU window"
+  },
+  {
+   "value": "100",
+   "label": "batches: a shape that finishes sooner is flagged as thrashing"
+  }
+ ],
+ "lede": "A shape, in my broker, is a set of prompts that share the same ordered prefixes, which is what makes them cacheable together on the GPU. Switching from one shape to another throws away the engine's prefix cache and may force a rebuild of its CUDA graphs. A broker that interleaves shapes freely therefore pays that price constantly, and the engine spends its time rebuilding rather than generating. So shapes in my broker have a lifecycle, and the lifecycle is a state machine with thresholds, not a heuristic. A new shape is staged. Its items accumulate per signature, and nothing is dispatched, because opening lanes for a handful of items wastes structure the engine could use.",
+ "quote": "Draining shapes never take new items, which is the invariant the whole design rests on.",
+ "evidence": [
+  "Token-aware scheduling: prompt shapes with a state-machine lifecycle, staged, active, draining and finished, so the GPU's prefix cache and CUDA graphs are rebuilt only when a switch is worth it.",
+  "GPU inference optimisation: a pre-warm signal names the next shape and lane so graphs are built before the switch, with a 99.9% key-value hit rate in a five-minute two-GPU window.",
+  "Observability and alerting: a thrashing alarm for any shape that finishes in fewer than 100 batches, and lane starvation counted as a metric rather than seen as slow batches."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/shapes-have-a-lifecycle/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/shapes-have-a-lifecycle"
+}

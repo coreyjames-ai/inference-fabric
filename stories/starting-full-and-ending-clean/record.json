@@ -1,0 +1,42 @@
+{
+ "url": "https://coreyjames.ai/stories/starting-full-and-ending-clean/",
+ "kind": "story",
+ "title": "Starting full and ending clean",
+ "subtitle": "A pressure gate holds dispatch until the first batches can be good, every batch closes on its token budget, and a cleanup mode drains the tail when the GPUs go quiet",
+ "systems": [
+  "inference-fabric"
+ ],
+ "technologies": [
+  "Token-aware GPU batch scheduling",
+  "Rust",
+  "Performance engineering and benchmarking",
+  "Prometheus"
+ ],
+ "stats": [
+  {
+   "value": "523 µs",
+   "label": "average time to assemble a batch"
+  },
+  {
+   "value": "~100%",
+   "label": "batch fill at the median, the ninetieth and the ninety-ninth percentile"
+  },
+  {
+   "value": "4",
+   "label": "integers each GPU registers: batch size, tokens, input length, model"
+  }
+ ],
+ "lede": "A batching broker is judged on its steady state, and its steady state is the easy part. The beginning and the end of a workload are where batches get small, caches get rebuilt and GPUs sit idle, and both needed their own mechanism. At the start of a run, items trickle in. A broker that dispatches the first trickle produces tiny batches and poor graph reuse, and the engine spends its first minutes doing badly what it could do well a moment later. So nothing is dispatched until staged and lane tokens together reach a release threshold. Packing follows the contract each GPU registered with.",
+ "quote": "Once open, the gate stays open for the life of the process; it is a start condition rather than a throttle.",
+ "evidence": [
+  "Token-aware scheduling: a release gate that holds dispatch until staged and lane tokens reach a threshold, so the first batches of a run are full.",
+  "High-throughput batch inference: every batch in a two-GPU run closed on its token budget, at about 100% fill at the median and tail percentiles, assembled in 523 µs on average.",
+  "Lock-free shared-memory IPC: same-host batches through a ring on huge pages with a compare-and-exchange claim loop, offset-addressed batches and read-only mapping by the consumer.",
+  "Workload tail handling: a cleanup mode with activation threshold 0 and a minimum batch of 1 that drains staged shapes and short lanes when the GPUs go quiet."
+ ],
+ "problem": "gpu-economics",
+ "canonical": "https://coreyjames.ai/stories/starting-full-and-ending-clean/",
+ "datePublished": "2026-10-28",
+ "author": "Corey James",
+ "github": "https://github.com/coreyjames-ai/inference-fabric/tree/main/stories/starting-full-and-ending-clean"
+}
